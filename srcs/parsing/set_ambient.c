@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_ambient.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 15:18:47 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 16:12:58 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/09 16:16:44 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "scene.h"
+#include "ambient.h"
 
-int	main(int argc, char **argv)
+void	set_ambient(t_ambient *ambient, char **splited)
 {
-	t_scene	scene;
-
-	init_scene(&scene);
-	parsing(&scene, argc, argv);
+	
 }
