@@ -15,10 +15,14 @@
                 "${workspaceFolder}/srcs/structure/scene/world",
                 "${workspaceFolder}/srcs/structure/scene/world/object",
                 "${workspaceFolder}/srcs/structure/scene/world/object/sphere",
+<<<<<<< HEAD
                 "${workspaceFolder}/srcs/structure/scene/world/light",
                 "${workspaceFolder}/srcs/parsing/parsing_utils",
                 "${workspaceFolder}/srcs/structure/scene/world/object/cylinder",
                 "${workspaceFolder}/srcs/structure/scene/world/object/plane"
+=======
+                "${workspaceFolder}/srcs/structure/scene/world/light"
+>>>>>>> 43e883029612c4d80e3d7f2cb33602c7843e94df
             ],
             "defines": [],
             "macFrameworkPath": [
