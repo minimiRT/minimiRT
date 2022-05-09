@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 12:55:39 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 15:15:56 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/09 15:27:28 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/09 15:27:46 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
-# include "enum.h"
+#ifndef PARSING_H
+# define PARSING_H
 
-void	ft_assert(t_bool condition, char *msg);
+void	parsing(t_scene *scene, int argc, char **argv);
 
-#endif
+# endif
