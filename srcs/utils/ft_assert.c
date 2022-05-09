@@ -6,14 +6,14 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:37:28 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 14:42:14 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/09 14:43:40 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "enum.h"
 #include "libft.h"
 
-void	ft_assert(enum e_bool condition, char *msg)
+void	ft_assert(t_bool condition, char *msg)
 {
 	if (condition)
 		return ;

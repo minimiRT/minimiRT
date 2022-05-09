@@ -6,17 +6,17 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:51:01 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 14:42:12 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/09 14:43:33 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENUM_H
 # define ENUM_H
 
-enum e_bool
+typedef enum e_bool
 {
 	FALSE,
 	TRUE
-};
+}			t_bool;
 
 #endif
