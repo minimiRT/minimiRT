@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 09:58:38 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 10:46:29 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/09 14:07:33 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ typedef struct s_camera t_camera;
 
 struct s_camera
 {
-	t_point3	*origin;
+	t_point3	origin;
 	double		viewport_height;
 	double		viewport_width;
-	t_vec3		*horizontal_len;
-	t_vec3		*vertical_len;
-	t_vec3		*focal_len;
-	t_point3	*left_bottom;
+	t_vec3		horizontal_len;
+	t_vec3		vertical_len;
+	t_vec3		focal_len;
+	t_point3	left_bottom;
 };
 
 t_camera	*new_camera(t_canvas *canvas, t_point3 *origin);

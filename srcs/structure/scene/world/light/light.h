@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student>                          +#+  +:+       +#+        */
+/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:52:44 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 10:37:16 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/09 14:07:33 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIGHT_H
 # include "vec3.h"
 # include "libft.h"
+
 typedef struct s_light	t_light;
 typedef t_list			t_lights;
 
