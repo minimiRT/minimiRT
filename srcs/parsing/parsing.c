@@ -6,12 +6,14 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 16:06:55 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/09 20:51:00 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "libft.h"
+#include "utils.h"
+#include "parsing_utils.h"
 #include <fcntl.h>
 
 static void	parse_line(t_scene *scene, char *line)
@@ -45,7 +47,7 @@ void	parsing(t_scene *scene, int argc, char **argv)
 	ft_assert(argc == 2, "Error\n");
 	dot = ft_strrchr(argv[1], '.');
 	ft_assert(ft_strncmp(".rt", dot, -1) == 0, "Error\n");
-	fd = open(argv, O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	ft_assert(fd != -1, "Error\n"); // error msg?
 	line = get_next_line(fd);
 	while (line)

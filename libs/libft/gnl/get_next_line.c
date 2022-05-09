@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 20:28:49 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 13:31:14 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/09 20:47:33 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	append_buf(char **m_buf, char *r_buf, int r_len)
 	return (1);
 }
 
-char	*get_remains(int fd, t_list *head)
+char	*get_remains(int fd, t_gnl_list *head)
 {
-	t_list	*curr;
-	t_list	*prev;
+	t_gnl_list	*curr;
+	t_gnl_list	*prev;
 
 	curr = head;
 	while (curr)
@@ -75,9 +75,9 @@ int	read_fd(int fd, char **m_buf, char *r_buf, char *remains)
 	}
 }
 
-void	free_list(int fd, t_list *prev, t_list *curr)
+void	free_list(int fd, t_gnl_list *prev, t_gnl_list *curr)
 {
-	t_list	*node;
+	t_gnl_list	*node;
 
 	while (fd >= 0 && curr)
 	{
@@ -103,7 +103,7 @@ void	free_list(int fd, t_list *prev, t_list *curr)
 
 char	*get_next_line(int fd)
 {
-	static t_list	head = {NULL, NULL, -1};
+	static t_gnl_list	head = {NULL, NULL, -1};
 	char			*remains;
 	char			r_buf[BUFFER_SIZE + 1];
 	char			*m_buf;
