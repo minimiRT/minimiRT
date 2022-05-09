@@ -16,7 +16,9 @@
                 "${workspaceFolder}/srcs/structure/scene/world/object",
                 "${workspaceFolder}/srcs/structure/scene/world/object/sphere",
                 "${workspaceFolder}/srcs/structure/scene/world/light",
-                "${workspaceFolder}/srcs/parsing/parsing_utils"
+                "${workspaceFolder}/srcs/parsing/parsing_utils",
+                "${workspaceFolder}/srcs/structure/scene/world/object/cylinder",
+                "${workspaceFolder}/srcs/structure/scene/world/object/plane"
             ],
             "defines": [],
             "macFrameworkPath": [

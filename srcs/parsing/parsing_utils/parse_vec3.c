@@ -6,11 +6,13 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 19:22:58 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 20:18:44 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/09 21:10:48 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec3.h"
+#include "parsing_utils.h"
+#include "utils.h"
 
 t_vec3	parse_vec3(char *str)
 {
@@ -18,7 +20,7 @@ t_vec3	parse_vec3(char *str)
 	char	**seperated;
 	int		wc;
 
-	seperated = ft_strsep(str);
+	seperated = ft_strsep(str, ',');
 	wc = ft_wordcount(seperated);
 	ft_assert(wc == 3, "Assert: invalid input of vector in parse_vec3");
 	vec.x = parse_double(seperated[0]);

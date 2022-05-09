@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 11:01:34 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 18:58:45 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/09 21:17:16 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ struct s_scene
 };
 
 void	init_scene(t_scene *scene);
-void	reset_scene(t_scene *scene);
+void	clear_scene(t_scene *scene);
 
 #endif

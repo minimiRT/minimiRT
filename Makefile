@@ -6,7 +6,7 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/09 20:49:06 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/09 21:18:13 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS_VEC3			=	add_vec3.c\
 						new_vec3.c\
 						plus_vec3.c\
 						sub_vec3.c
+SRCS_SCENE			=	init_scene.c
 SRCS_STRUCTURE		=	$(SRCS_PIXEL)\
 						$(SRCS_SCENE)\
 						$(SRCS_VEC3)
@@ -75,13 +76,13 @@ LIBS	=	-L./libs/libft -lft
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJS) $(LIBS)
+$(NAME): $(OBJS)
 	$(CC) $(LIBS) $^ -o $@
 
 $(LIBS):
 	$(MAKE) bonus -C libs/libft
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: %.c $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 $(OBJ_DIR):

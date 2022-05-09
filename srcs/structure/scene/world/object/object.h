@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 09:09:29 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 14:09:12 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/09 20:57:57 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 # define OBJECT_H
+# include "cylinder.h"
+# include "plane.h"
 # include "sphere.h"
 # include "libft.h"
 

@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 20:54:07 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/09 20:58:29 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "parsing_utils.h"
 #include "constant.h"
 #include "libft.h"
+#include "utils.h"
 
 void	add_new_cylinder(t_objects *objects, char **splited)
 {

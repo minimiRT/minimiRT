@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 19:19:26 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/09 20:59:02 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "parsing_utils.h"
 #include "constant.h"
 #include "libft.h"
+#include "utils.h"
 
 void	add_new_plane(t_objects *objects, char **splited)
 {
@@ -29,5 +30,5 @@ void	add_new_plane(t_objects *objects, char **splited)
 	object->albedo = parse_vec3(splited[3]);
 	object->element = plane;
 	object->type = PLANE;
-	ft_lstadd_back(&objects, object); //init scene에서 objects null 초기화
+	ft_lstadd_back(&objects, ft_lstnew(object)); //init scene에서 objects null 초기화
 }

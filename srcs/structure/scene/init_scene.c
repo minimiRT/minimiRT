@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   div_vec3.c                                         :+:      :+:    :+:   */
+/*   init_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 14:42:18 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/09 21:12:21 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/09 21:16:44 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/09 21:17:42 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3.h"
-#include "utils.h"
+#include "scene.h"
 
-t_vec3	div_vec3(t_vec3 first, t_vec3 second)
+void	init_scene(t_scene *scene)
 {
-	ft_assert((second.x != 0 && second.y != 0 && second.z != 0), \
-		"Assert: division by zero in div_vec3\n");
-	first.x /= second.x;
-	first.y /= second.y;
-	first.z /= second.z;
-	return (first);
+	scene->world.lights = NULL;
+	scene->world.objects = NULL;
+	return ;
 }
