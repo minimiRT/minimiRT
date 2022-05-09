@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"get_next_line.h": "c",
-		"bi_lst.h": "c"
+		"bi_lst.h": "c",
+		"enum.h": "c"
 	}
 }
