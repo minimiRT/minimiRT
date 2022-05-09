@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
+/*   parse_vec3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 11:01:34 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 18:58:45 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/09 19:22:58 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/09 20:18:44 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_H
-# define SCENE_H
-# include "canvas.h"
-# include "camera.h"
-# include "ambient.h"
-# include "world.h"
+#include "vec3.h"
 
-typedef struct s_scene	t_scene;
-
-struct s_scene
+t_vec3	parse_vec3(char *str)
 {
-	t_camera	camera;
-	t_canvas	canvas;
-	t_world		world;
-	t_ambient	ambient;
-};
+	t_vec3	vec;
+	char	**seperated;
+	int		wc;
 
-void	init_scene(t_scene *scene);
-void	reset_scene(t_scene *scene);
-
-#endif
+	seperated = ft_strsep(str);
+	wc = ft_wordcount(seperated);
+	ft_assert(wc == 3, "Assert: invalid input of vector in parse_vec3");
+	vec.x = parse_double(seperated[0]);
+	vec.y = parse_double(seperated[1]);
+	vec.z = parse_double(seperated[2]);
+	ft_splitfree(seperated);
+	return (vec);
+}

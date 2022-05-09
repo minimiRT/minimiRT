@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
+/*   parsing_utils.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 11:01:34 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 18:58:45 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/09 15:27:28 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/09 20:15:39 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_H
-# define SCENE_H
-# include "canvas.h"
-# include "camera.h"
-# include "ambient.h"
-# include "world.h"
+#ifndef PARSING_UTILS_H
+# define PARSING_UTILS_H
+# include "vec3.h"
 
-typedef struct s_scene	t_scene;
+t_vec3	parse_vec3(char *str);
+double	parse_double(char *str);
+char	**ft_strsep(char const *s, char c);
 
-struct s_scene
-{
-	t_camera	camera;
-	t_canvas	canvas;
-	t_world		world;
-	t_ambient	ambient;
-};
-
-void	init_scene(t_scene *scene);
-void	reset_scene(t_scene *scene);
-
-#endif
+# endif
