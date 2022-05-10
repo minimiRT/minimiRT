@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane.h                                            :+:      :+:    :+:   */
+/*   free_object.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 15:51:01 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:02:19 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/09 21:16:44 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/10 10:02:03 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_H
-# define PLANE_H
-# include "vec3.h"
+#include "object.h"
 
-typedef struct s_plane t_plane;
-
-struct  s_plane
+void	free_object(void *object)
 {
-	t_point3	center;
-	t_vec3		orientation;
-	t_color3	color;
-};
+	t_object	*object_temp;
 
-#endif
+	object_temp = (t_object *)object;
+	free(object->element);
+	free(object_temp);
+}

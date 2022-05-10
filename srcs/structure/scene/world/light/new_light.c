@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane.h                                            :+:      :+:    :+:   */
+/*   new_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 15:51:01 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:02:19 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/09 21:16:44 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/10 10:05:10 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_H
-# define PLANE_H
-# include "vec3.h"
+#include "light.h"
 
-typedef struct s_plane t_plane;
-
-struct  s_plane
+t_light	*new_light(t_point3 origin, t_color3 color, double bright_ratio)
 {
-	t_point3	center;
-	t_vec3		orientation;
-	t_color3	color;
-};
+	t_light	*light;
 
-#endif
+	light = malloc(sizeof(t_light));
+	light->origin = origin;
+	light->color = color;
+	light->bright_ratio = bright_ratio;
+}

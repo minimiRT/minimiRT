@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    clear_scene.c                                     :+:      :+:    :+:   */
+/*   clear_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:16:44 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 09:49:10 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 10:05:52 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	clear_scene(t_scene *scene)
 {
-	ft_lstclear(&scene->world.lights, free_light);
+	ft_lstclear(&scene->world.lights, free);
 	ft_lstclear(&scene->world.objects, free_object);
 	scene->world.lights = NULL;
 	scene->world.objects = NULL;
