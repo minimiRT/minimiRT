@@ -12,6 +12,16 @@ t_bool	is_in_shadow(t_objects *objects, t_ray light_ray, double light_len)
 	return (FALSE);
 }
 
+// todo: move to structure/pixel/ray
+t_ray	init_ray(t_point3 origin, t_vec3 direction)
+{
+	t_ray	ray;
+
+	ray.origin = origin;
+	ray.direction = get_unit_vec3(direction);
+	return (ray);
+}
+
 t_color3	get_diffuse_light(t_scene *scene, t_light *light, t_hit_record record)
 {
 	t_color3	diffuse_light;
@@ -20,12 +30,13 @@ t_color3	get_diffuse_light(t_scene *scene, t_light *light, t_hit_record record)
 	t_ray		light_ray;
 	double		kd;
 
-	light_dir = sub_vec3(light->origin, record.hit_point); // todo: replace to vec_to_light ?
+	light_dir = sub_vec3(light->origin, record.hit_point); // todo: replace light_dir to vec_to_light ?
 	light_len = get_vec3_len(light_dir);
 	light_ray = init_ray(
-		add_vec3(record.hit_point, mul_vec3_t(record.normal, 1e-6), light_dir)
-	); // todo: implement
-	// +todo: replace 1e-6 macro EPSILON
+		add_vec3(
+			record.hit_point, 
+			mul_vec3_t(record.normal, 1e-6)), 
+		light_dir); // todo: replace 1e-6 macro EPSILON
 	if (is_in_shadow(scene->world.objects, light_ray, light_len))
 		return (init_vec3(0, 0, 0));
 	light_dir = get_unit_vec3(light_dir);
@@ -61,16 +72,10 @@ t_color3	get_light_of_pixel(t_scene *scene, t_light *light, t_ray pixel_ray, t_h
 	t_color3	diffuse;
 	t_color3	specular;
 	double		brightness;
-	
-	// get diffuse
+
 	diffuse = get_diffuse_light(scene, light, record);
-
-	// get specular
 	specular = get_specular_light(scene, light, pixel_ray, record);
-
 	brightness = light.bright_ratio * 3; // todo: replace 3 to LUMEN
-	
-	// ret = diffuse + specular
 	ret = mul_vec3_t(add_vec3(diffuse, specular), brightness);
 	return (ret);
 }
@@ -80,7 +85,7 @@ t_color3	get_color_from_phong_lighting(t_scene *scene, t_ray pixel_ray, t_hit_re
 	t_color3	ret_light_color;
 	t_lights	*lights;
 
-	ret_light_color = init_vec3(0, 0, 0); // todo: implement
+	ret_light_color = init_vec3(0, 0, 0);
 	lights = scene->world.lights;
 	while (lights)
 	{

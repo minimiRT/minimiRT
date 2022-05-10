@@ -28,16 +28,26 @@ static t_ray	get_pixel_ray(t_camera cam, double u, double v)
 	return (ray);
 }
 
-t_color3	get_pixel_color(t_scene *scene, t_ray pixel_ray)
+// todo: move to structure/pixel/hit_record
+#include <math.h>
+t_hit_record	init_hit_record(void)
 {
-	t_color3		pixel_color; // todo: remove
 	t_hit_record	record;
 
-	// todo: init_record
+	record.min = 1e-6; // todo: replace to EPSILON
+	record.max = INFINITY;
+	return (record);
+}
+
+t_color3	get_pixel_color(t_scene *scene, t_ray pixel_ray)
+{
+	t_hit_record	record;
+
+	record = init_hit_record(record);
 	if (hit_objects(scene->world.objects, pixel_ray, &record))
 		return (get_color_from_phong_lighting(scene, pixel_ray, record));
 	else
-		return (pixel_color); // return black
+		return (init_vec3(0, 0, 0)); // return black
 }
 
 void	trace_ray_and_draw_pixel(t_scene *scene, double u, double v)
@@ -46,23 +56,18 @@ void	trace_ray_and_draw_pixel(t_scene *scene, double u, double v)
 	t_color3	pixel_color;
 
 	pixel_ray = get_pixel_ray(scene->camera);
-	
-	// get pixel color
 	pixel_color = get_pixel_color(scene, pixel_ray);
-	
+
 	// draw pixel color(using mlx)
-	draw_pixel(); // convert color3 to 16-bit color value
+	//draw_pixel(); // convert color3 to 16-bit color value
 }
 
-// todo: implement setting mlx function before this function
 void	drive_ray_tracing(t_scene *scene)
 {
 	int			x_coord;
 	int			y_coord;
 	double		u;
 	double		v;
-	
-	t_mlx		mlx;	// buffer
 
 	y_coord = scene->canvas.height;
 	while (--y_coord >= 0)
