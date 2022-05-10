@@ -2,6 +2,9 @@
 # define TRACING_H
 
 # include "scene.h"
+# include "enum.h"
+# include "ray.h"
+# include "hit_record.h"
 # include "mlx.h"
 
 void		drive_ray_tracing(t_scene *scene);

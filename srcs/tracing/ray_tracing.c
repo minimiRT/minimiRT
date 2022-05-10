@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "ray.h"
-#include "hit_record.h"
 #include "tracing.h"
 
 static t_ray	get_pixel_ray(t_camera cam, double u, double v)

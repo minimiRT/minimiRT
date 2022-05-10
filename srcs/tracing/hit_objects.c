@@ -1,4 +1,3 @@
-
 #include "tracing.h"
 #include <math.h>
 
@@ -7,7 +6,7 @@ t_point3	get_point_ray_reach(t_ray ray, double t)
 {
 	t_point3	point;
 
-	point = add_vec3(ray->origin, mul_vec3_t(ray->direction, t));
+	point = add_vec3(ray.origin, mul_vec3_t(ray.direction, t));
 	return (point);
 }
 
@@ -23,9 +22,9 @@ t_bool	hit_sphere(t_object *object, t_ray ray, t_hit_record *record)
 	double		root;
 
 	sphere = object->element;
-	co = sub_vec3(ray.orig, sphere->center);
-	a = dot_vec3(ray.dir, ray.dir);
-	half_b = dot_vec3(ray.dir, co);
+	co = sub_vec3(ray.origin, sphere->center);
+	a = dot_vec3(ray.direction, ray.direction);
+	half_b = dot_vec3(ray.direction, co);
 	c = dot_vec3(co, co) - sphere->radius_square; 
 	discriminant = half_b * half_b - a * c;
 	if (discriminant < 0)

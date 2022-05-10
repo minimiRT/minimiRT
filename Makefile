@@ -96,7 +96,7 @@ INCS	=	-I./srcs/parsing/parsing_utils/\
 			-I./test
 
 LIBS	=	-L./libs/libft -lft
-LIBMLX	=	-L./lib/minilibx_macos -lmlx -framework OpenGL -framework AppKit
+LIBMLX	=	-L./libs/minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
