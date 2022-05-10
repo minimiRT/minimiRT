@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ambient.h                                          :+:      :+:    :+:   */
+/*    clear_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 11:01:34 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 09:47:00 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/09 21:16:44 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/10 09:49:10 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMBIENT_H
-# define AMBIENT_H
-# include "vec3.h"
+#include "scene.h"
+#include "libft.h"
 
-typedef struct s_ambient	t_ambient;
-
-struct s_ambient
+void	clear_scene(t_scene *scene)
 {
-	double		ratio;
-	t_color3	color;
-};
-
-#endif
+	ft_lstclear(&scene->world.lights, free_light);
+	ft_lstclear(&scene->world.objects, free_object);
+	scene->world.lights = NULL;
+	scene->world.objects = NULL;
+	return ;
+}
