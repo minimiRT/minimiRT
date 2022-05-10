@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 14:07:00 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 16:30:28 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	parse_line(t_scene *scene, char *line)
 	if (ft_strncmp(splited[0], "A", -1) == 0)	// 파일 안에 대문자로 된 오브제트가 없을 때 처리.
 		set_ambient(&scene->ambient, splited);
 	else if (ft_strncmp(splited[0], "C", -1) == 0)
-		set_camera(&scene->camera, splited);
+		set_camera(&scene->camera, &scene->canvas, splited);
 	else if (ft_strncmp(splited[0], "L", -1) == 0)
 		add_new_light(&scene->world.lights, splited);
 	else if (ft_strncmp(splited[0], "sp", -1) == 0)
