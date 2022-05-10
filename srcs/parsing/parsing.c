@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 21:23:57 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 09:14:44 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	parsing(t_scene *scene, int argc, char **argv)
 	char	*line;
 	int		fd;
 
-	ft_assert(argc == 2, "Error\n");
+	ft_assert(argc == 2, "Assert: Bad arguments\n");
 	dot = ft_strrchr(argv[1], '.');
-	ft_assert(ft_strncmp(".rt", dot, -1) == 0, "Error\n");
+	ft_assert(ft_strncmp(".rt", dot, -1) == 0, "Assert: It isn't .rt file \n");
 	fd = open(argv[1], O_RDONLY);
-	ft_assert(fd != -1, "Error\n"); // error msg?
+	ft_assert(fd != -1, "Assert: file open failed"); // error msg?
 	line = get_next_line(fd);
 	while (line)
 	{
