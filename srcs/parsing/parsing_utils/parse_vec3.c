@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 19:22:58 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 13:22:12 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 14:19:28 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "parsing_utils.h"
 #include "utils.h"
 #include "constant.h"
-
-#include <stdio.h>
 
 t_vec3	parse_vec3(char *str)
 {
