@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:51:01 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:02:16 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 10:57:46 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ struct  s_sphere
 	double		radius;
 	double		radius_square;
 };
+
+t_sphere	*new_sphere(t_point3 center, double radius);
 
 #endif

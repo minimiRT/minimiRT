@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_object.c                                       :+:      :+:    :+:   */
+/*   new_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:16:44 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 11:02:47 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 11:03:00 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#include "cylinder.h"
 #include "constant.h"
 #include "utils.h"
 #include <stdlib.h>
 
-t_object	*new_object(enum e_object type, void *element, t_color3 albedo)
+t_cylinder	*new_cylinder(\
+	t_point3 center, \
+	t_vec3 orientation, \
+	double radius, \
+	double height\
+)
 {
-	t_object	*object;
+	t_cylinder	*cylinder;
 
-	object = malloc(sizeof(t_object));
-	ft_assert(object != FT_NULL, "Assert: malloc failed in new_object\n");
-	object->element = element;
-	object->type = type;
-	object->albedo = albedo;
-	return (object);
+	cylinder = malloc(sizeof(t_cylinder));
+	ft_assert(cylinder != FT_NULL, "Assert: malloc failed in new_cylinder\n");
+	cylinder->center = center;
+	cylinder->orientation = orientation;
+	cylinder->radius = radius;
+	cylinder->height = height;
+	return (cylinder);
 }
