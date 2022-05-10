@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:51:01 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:02:19 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 10:11:07 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ struct  s_plane
 {
 	t_point3	center;
 	t_vec3		orientation;
-	t_color3	color;
 };
 
 #endif
