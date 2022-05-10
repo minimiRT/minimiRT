@@ -6,11 +6,12 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:12:52 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 20:16:05 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 20:34:56 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_utils.h"
+#include "utils.h"
 
 double	parse_ratio(char *str)
 {

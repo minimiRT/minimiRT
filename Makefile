@@ -6,7 +6,7 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/10 13:59:02 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/10 20:34:32 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,11 @@ CFLAGS	=	-Wall -Werror -Wextra
 VPATH	=	$(shell ls -R)
 SRCS_PARSING_UTILS	=	ft_strsep.c\
 						parse_double.c\
-						parse_vec3.c
+						parse_vec3.c\
+						parse_color.c\
+						parse_positive_double.c\
+						parse_fov.c\
+						parse_ratio.c
 SRCS_PARSING		=	parsing.c\
 						set_ambient.c\
 						set_camera.c\

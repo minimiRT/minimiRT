@@ -6,25 +6,26 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 20:28:52 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 20:38:48 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "vec3.h"
 #include <math.h>
+#include "utils.h"
 #include "parsing_utils.h"
 
-static int	is_same_vec3(t_vec3 *a, t_vec3 *b)
+static int	is_same_vec3(t_vec3 a, t_vec3 b)
 {
-	if (a->x == b->x && a->y == b->y && a->z == b->z)
+	if (a.x == b.x && a.y == b.y && a.z == b.z)
 		return (1);
 	return (0);
 }
 
-static int	is_reverse_vec3(t_vec3 *a, t_vec3 *b)
+static int	is_reverse_vec3(t_vec3 a, t_vec3 b)
 {
-	if (a->x == b->x && a->y == -(b->y) && a->z == b->z)
+	if (a.x == b.x && a.y == -(b.y) && a.z == b.z)
 		return (1);
 	return (0);
 }
@@ -40,14 +41,16 @@ void	set_camera(t_camera *camera, t_canvas *canvas, char **splited)
 	double	fov;
 
 	camera->origin = parse_vec3(splited[1]);
-	z_axis = mul_vec3_t(get_unit_vec3(parse_vec3(splited[2])), -1); //카메라 방향 0,0,0일때
-	fov = parse_fov(splited[3]); // 0 <= fov < 180;
+	z_axis = parse_vec3(splited[2]);
+	ft_assert(!is_same_vec3(init_vec3(0, 0, 0), z_axis), "Assert: invalid dircetion vector of camera\n");
+	z_axis = mul_vec3_t(get_unit_vec3(z_axis), -1);
+	fov = parse_fov(splited[3]);
 	camera->viewport_height = VIEWPORT_HEIGHT;
 	camera->viewport_width = camera->viewport_height * canvas->aspect_ratio;
 	temp_axis = init_vec3(0, 1, 0);
-	if (is_same_vec3(&temp_axis, &z_axis))
-		temp_axis = init_vec3(0, 02, -1);
-	else if (is_reverse_vec3(&temp_axis, &z_axis))
+	if (is_same_vec3(temp_axis, z_axis))
+		temp_axis = init_vec3(0, 0, -1);
+	else if (is_reverse_vec3(temp_axis, z_axis))
 		temp_axis = init_vec3(0, 0, 1);
 	x_axis = get_unit_vec3(cross_vec3(z_axis, temp_axis));
 	y_axis = get_unit_vec3(cross_vec3(x_axis, z_axis));
