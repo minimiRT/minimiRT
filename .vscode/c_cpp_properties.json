@@ -3,26 +3,13 @@
         {
             "name": "Mac",
             "includePath": [
-                "${default}",
-                "${workspaceFolder}/libs/libft",
-                "${workspaceFolder}/srcs/utils",
-                "${workspaceFolder}/srcs/structure/scene",
-                "${workspaceFolder}/srcs/parsing",
+                "${workspaceFolder}/incs",
+                "${workspaceFolder}/libft",
+                "${workspaceFolder}/structure/**",
+                "${workspaceFolder}/structure/scene/",
+                "${workspaceFolder}/trace/**",
                 "${workspaceFolder}/srcs/structure/scene/canvas",
-                "${workspaceFolder}/srcs/structure/scene/camera",
-                "${workspaceFolder}/srcs/structure/vec3",
-                "${workspaceFolder}/srcs/structure/scene/ambient",
-                "${workspaceFolder}/srcs/structure/scene/world",
-                "${workspaceFolder}/srcs/structure/scene/world/object",
-                "${workspaceFolder}/srcs/structure/scene/world/object/sphere",
-<<<<<<< HEAD
-                "${workspaceFolder}/srcs/structure/scene/world/light",
-                "${workspaceFolder}/srcs/parsing/parsing_utils",
-                "${workspaceFolder}/srcs/structure/scene/world/object/cylinder",
-                "${workspaceFolder}/srcs/structure/scene/world/object/plane"
-=======
-                "${workspaceFolder}/srcs/structure/scene/world/light"
->>>>>>> 43e883029612c4d80e3d7f2cb33602c7843e94df
+                "${workspaceFolder}/srcs/structure/vec3"
             ],
             "defines": [],
             "macFrameworkPath": [
@@ -31,7 +18,20 @@
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c11",
             "cppStandard": "c++98",
-            "intelliSenseMode": "macos-clang-x64"
+            "intelliSenseMode": "macos-clang-x64",
+            "compilerArgs": [],
+            "mergeConfigurations": false,
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/incs",
+                    "${workspaceFolder}/libft",
+                    "${workspaceFolder}/structure/**",
+                    "${workspaceFolder}/structure/scene/",
+                    "${workspaceFolder}/trace/**",
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ],
     "version": 4
