@@ -2,6 +2,7 @@
 # define TRACING_H
 
 # include "scene.h"
+# include "mlx.h"
 
 void		drive_ray_tracing(t_scene *scene);
 t_bool		hit_objects(t_objects *objects, t_ray ray, t_hit_record *record);
