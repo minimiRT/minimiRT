@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane.h                                            :+:      :+:    :+:   */
+/*   clear_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 15:51:01 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:57:32 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/09 21:16:44 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/10 10:05:52 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_H
-# define PLANE_H
-# include "vec3.h"
+#include "scene.h"
+#include "libft.h"
 
-typedef struct s_plane t_plane;
-
-struct  s_plane
+void	clear_scene(t_scene *scene)
 {
-	t_point3	center;
-	t_vec3		orientation;
-};
-
-t_plane	*new_plane(t_point3 center, t_vec3 orientation);
-
-#endif
+	ft_lstclear(&scene->world.lights, free);
+	ft_lstclear(&scene->world.objects, free_object);
+	scene->world.lights = NULL;
+	scene->world.objects = NULL;
+	return ;
+}

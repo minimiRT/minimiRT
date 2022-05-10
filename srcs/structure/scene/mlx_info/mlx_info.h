@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane.h                                            :+:      :+:    :+:   */
+/*   mlx_info.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 15:51:01 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:57:32 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/04 11:01:34 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/10 10:36:32 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_H
-# define PLANE_H
-# include "vec3.h"
+#ifndef MLX_INFO_H
+# define MLX_INFO_H
 
-typedef struct s_plane t_plane;
+typedef struct s_mlx_info t_mlx_info;
 
-struct  s_plane
+struct s_mlx_info
 {
-	t_point3	center;
-	t_vec3		orientation;
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*data_addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
 };
 
-t_plane	*new_plane(t_point3 center, t_vec3 orientation);
+void	init_mlx_info(t_mlx_info *mlx_info);
 
 #endif

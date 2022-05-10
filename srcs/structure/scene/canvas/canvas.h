@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 10:03:53 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 13:39:08 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/10 09:46:34 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,5 @@ struct  s_canvas
 	int		height;
 	double	aspect_ratio;
 };
-
-void		free_canvas(t_canvas *canvas);
-t_canvas	*new_canvas(int width, int height);
 
 #endif

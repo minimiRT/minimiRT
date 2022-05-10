@@ -6,7 +6,7 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/09 21:18:13 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/10 11:01:12 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,18 @@ SRCS_VEC3			=	add_vec3.c\
 						new_vec3.c\
 						plus_vec3.c\
 						sub_vec3.c
-SRCS_SCENE			=	init_scene.c
+SRCS_MLX_INFO		=	init_mlx_info.c
+SRCS_OBJECT			=	new_object.c\
+						free_object.c\
+						new_plane.c\
+						new_sphere.c\
+						new_cylinder.c
+SRCS_WORLD			=	new_light.c\
+						$(SRCS_OBJECT)
+SRCS_SCENE			=	init_scene.c\
+						clear_scene.c\
+						$(SRCS_MLX_INFO)\
+						$(SRCS_WORLD)
 SRCS_STRUCTURE		=	$(SRCS_PIXEL)\
 						$(SRCS_SCENE)\
 						$(SRCS_VEC3)
@@ -58,6 +69,7 @@ INCS	=	-I./srcs/parsing/parsing_utils/\
 			-I./srcs/structure/pixel/hit_record/\
 			-I./srcs/structure/pixel/ray/\
 			-I./srcs/structure/scene/\
+			-I./srcs/structure/scene/mlx_info/\
 			-I./srcs/structure/scene/ambient/\
 			-I./srcs/structure/scene/camera/\
 			-I./srcs/structure/scene/canvas/\
