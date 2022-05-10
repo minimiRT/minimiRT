@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ambient.c                                      :+:      :+:    :+:   */
+/*   parse_positive_double.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 20:28:12 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/10 20:17:52 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/10 20:20:14 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ambient.h"
 #include "parsing_utils.h"
 
-void	set_ambient(t_ambient *ambient, char **splited)
+double	parse_positive_double(char *str)
 {
-	ambient->ratio = parse_ratio(splited[1]);
-	ambient->color = parse_color(splited[2]);
+	double	ret;
+
+	ret = parse_double(str);
+	ft_assert(ret >= 0 && ret < 180, "Assert: invalid range of ratio\n");
+	return (ret);
 }
