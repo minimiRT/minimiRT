@@ -24,6 +24,10 @@ SRCS_PARSING		=	parsing.c\
 						add_new_plane.c\
 						add_new_light.c\
 						$(SRCS_PARSING_UTILS)
+SRCS_TRACING		=	ray_tracing.c\
+						hit_objects.c\
+						phong_lighting.c\
+						draw_pixel.c
 SRCS_VEC3			=	add_vec3.c\
 						init_vec3.c\
 						copy_vec3.c\
@@ -61,6 +65,7 @@ SRCS_TEST_PRINT		=	print_scene.c
 SRCS				=	main.c\
 						$(SRCS_PARSING)\
 						$(SRCS_STRUCTURE)\
+						$(SRCS_TRACING)\
 						$(SRCS_UTILS)\
 						$(SRCS_TEST_PRINT)
 OBJ_DIR = objs
@@ -83,6 +88,7 @@ INCS	=	-I./srcs/parsing/parsing_utils/\
 			-I./srcs/structure/scene/world/object/plane/\
 			-I./srcs/structure/scene/world/object/sphere/\
 			-I./srcs/structure/vec3/\
+			-I./srcs/tracing/\
 			-I./srcs/utils/\
 			-I./libs/libft/\
 			-I./incs\

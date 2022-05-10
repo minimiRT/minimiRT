@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "scene.h"
+#include "ray.h"
+#include "hit_record.h"
+#include "tracing.h"
 
 static t_ray	get_pixel_ray(t_camera cam, double u, double v)
 {
@@ -23,7 +26,7 @@ static t_ray	get_pixel_ray(t_camera cam, double u, double v)
 								add_vec3(
 									cam.left_bottom, 
 									mul_vec3_t(cam.horizontal_vec, u)), 
-								mul_vec3_t(cam.vertical_vec, u)), 
+								mul_vec3_t(cam.vertical_vec, v)), 
 							cam.origin));
 	return (ray);
 }
@@ -43,7 +46,7 @@ t_color3	get_pixel_color(t_scene *scene, t_ray pixel_ray)
 {
 	t_hit_record	record;
 
-	record = init_hit_record(record);
+	record = init_hit_record();
 	if (hit_objects(scene->world.objects, pixel_ray, &record))
 		return (get_color_from_phong_lighting(scene, pixel_ray, record));
 	else
@@ -81,5 +84,5 @@ void	drive_ray_tracing(t_scene *scene)
 	}
 	//mlx_put_image
 	mlx_info = scene->mlx_info;
-	mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
+	mlx_put_image_to_window(mlx_info.mlx, mlx_info.win, mlx_info.img, 0, 0);
 }
