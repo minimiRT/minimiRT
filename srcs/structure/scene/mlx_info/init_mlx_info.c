@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 09:32:18 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:22:48 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 10:36:56 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 void	init_mlx_info(t_mlx_info *mlx_info)
 {
+	(void)mlx_info;
 	// mlx_info->mlx = mlx_init();
 	// ft_assert(mlx_info->mlx != FT_NULL, "Assert: mlx_init error\n");
 	// mlx_info->win = mlx_new_window(mlx_info->mlx, WIN_WIDTH, WIN_HEIGHT, "mlx_info");

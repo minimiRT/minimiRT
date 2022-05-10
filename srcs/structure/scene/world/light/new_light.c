@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:16:44 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:05:10 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 10:37:11 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ t_light	*new_light(t_point3 origin, t_color3 color, double bright_ratio)
 	light->origin = origin;
 	light->color = color;
 	light->bright_ratio = bright_ratio;
+	return (light);
 }

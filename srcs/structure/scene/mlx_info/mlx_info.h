@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 11:01:34 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:19:28 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 10:36:32 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ struct s_mlx_info
 	int		endian;
 };
 
+void	init_mlx_info(t_mlx_info *mlx_info);
 
 #endif
