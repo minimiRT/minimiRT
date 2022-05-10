@@ -3,8 +3,13 @@
         {
             "name": "Mac",
             "includePath": [
-                "${default}",
-                "${workspaceFolder}/libs/libft"
+                "${workspaceFolder}/incs",
+                "${workspaceFolder}/libft",
+                "${workspaceFolder}/structure/**",
+                "${workspaceFolder}/structure/scene/",
+                "${workspaceFolder}/trace/**",
+                "${workspaceFolder}/libs/libft",
+                "${workspaceFolder}/srcs/utils"
             ],
             "defines": [],
             "macFrameworkPath": [
@@ -13,7 +18,21 @@
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c11",
             "cppStandard": "c++98",
-            "intelliSenseMode": "macos-clang-x64"
+            "intelliSenseMode": "macos-clang-x64",
+            "compilerArgs": [],
+            "mergeConfigurations": false,
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/incs",
+                    "${workspaceFolder}/libft",
+                    "${workspaceFolder}/structure/**",
+                    "${workspaceFolder}/structure/scene/",
+                    "${workspaceFolder}/trace/**",
+                    "${workspaceFolder}/libs/libft",
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ],
     "version": 4

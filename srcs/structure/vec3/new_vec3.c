@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   new_vec3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:31:06 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/09 16:47:51 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/09 21:27:14 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec3.h"
+#include "utils.h"
 #include <stdlib.h>
 
 t_vec3	*new_vec3(double x, double y, double z)

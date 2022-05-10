@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:55:39 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 12:56:01 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/09 15:15:56 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
+# include "enum.h"
+
+void	ft_assert(t_bool condition, char *msg);
 
 #endif

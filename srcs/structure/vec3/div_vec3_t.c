@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   div_vec3_t.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:44:28 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/09 16:49:46 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/09 21:26:07 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec3.h"
+#include "utils.h"
 
 t_vec3	div_vec3_t(t_vec3 vec, double t)
 {

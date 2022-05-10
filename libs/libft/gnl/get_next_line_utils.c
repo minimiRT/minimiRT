@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 20:28:56 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 14:10:04 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/09 20:47:33 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ int	check_nl(char *buf)
 	return (-1);
 }
 
-t_list	*new_node(int fd)
+t_gnl_list	*new_node(int fd)
 {
-	t_list	*node;
+	t_gnl_list	*node;
 
-	node = malloc(sizeof(t_list));
+	node = malloc(sizeof(t_gnl_list));
 	if (node == NULL)
 		return (NULL);
 	node->content = malloc(sizeof(char) * BUFFER_SIZE);

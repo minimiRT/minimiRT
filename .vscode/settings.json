@@ -2,6 +2,17 @@
 	"files.associations": {
 		"get_next_line.h": "c",
 		"bi_lst.h": "c",
-		"enum.h": "c"
+		"enum.h": "c",
+<<<<<<< HEAD
+		"scene.h": "c",
+		"parsing_utils.h": "c",
+		"ambient.h": "c",
+		"canvas.h": "c",
+		"world.h": "c",
+		"camera.h": "c",
+		"object.h": "c"
+=======
+		"scene.h": "c"
+>>>>>>> 43e883029612c4d80e3d7f2cb33602c7843e94df
 	}
 }
