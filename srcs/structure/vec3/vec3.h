@@ -25,6 +25,7 @@ struct s_vec3
 };
 
 void	copy_vec3(t_vec3 src, t_vec3 *dest);
+t_vec3	init_vec3(double x, double y, double z);
 t_vec3	*dup_vec3(t_vec3 vec);
 t_vec3	*new_vec3(double x, double y, double z);
 t_vec3	add_vec3(t_vec3 first, t_vec3 second);

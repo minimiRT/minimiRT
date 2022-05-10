@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_camera.c                                       :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 14:14:34 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/10 12:10:24 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/10 12:11:51 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "vec3.h"
-#include "parsing_utils.h"
 
-void	set_camera(t_camera *camera, char **splited)
-{
-	t_vec3	orientation;
-	double	fov;
+#ifndef TEST_H
+# define TEST_H
+# include <stdio.h>
+# include "scene.h"
 
-	copy_vec3(parse_vec3(splited[1]), &camera->origin);
-	orientation = get_unit_vec3(parse_vec3(splited[2]));
-	fov = parse_double(splited[3]);
-}
+void	print_scene(t_scene *scene);
+
+#endif

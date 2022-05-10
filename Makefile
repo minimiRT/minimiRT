@@ -6,7 +6,7 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/10 11:01:12 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/10 13:59:02 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS_PARSING		=	parsing.c\
 						add_new_light.c\
 						$(SRCS_PARSING_UTILS)
 SRCS_VEC3			=	add_vec3.c\
+						init_vec3.c\
 						copy_vec3.c\
 						cross_vec3.c\
 						div_vec3.c\
@@ -56,10 +57,12 @@ SRCS_STRUCTURE		=	$(SRCS_PIXEL)\
 						$(SRCS_SCENE)\
 						$(SRCS_VEC3)
 SRCS_UTILS			=	ft_assert.c
+SRCS_TEST_PRINT		=	print_scene.c
 SRCS				=	main.c\
 						$(SRCS_PARSING)\
 						$(SRCS_STRUCTURE)\
-						$(SRCS_UTILS)
+						$(SRCS_UTILS)\
+						$(SRCS_TEST_PRINT)
 OBJ_DIR = objs
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
@@ -82,7 +85,8 @@ INCS	=	-I./srcs/parsing/parsing_utils/\
 			-I./srcs/structure/vec3/\
 			-I./srcs/utils/\
 			-I./libs/libft/\
-			-I./incs
+			-I./incs\
+			-I./test
 
 LIBS	=	-L./libs/libft -lft
 
@@ -92,7 +96,7 @@ $(NAME): $(OBJS)
 	$(CC) $(LIBS) $^ -o $@
 
 $(LIBS):
-	$(MAKE) bonus -C libs/libft
+	$(MAKE) ft
 
 $(OBJ_DIR)/%.o: %.c $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
@@ -111,5 +115,12 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-.PHONY: all fclean clean re
+ft:
+	$(MAKE) bonus -C libs/libft
+
+ft_reclean:
+	$(MAKE) re -C libs/libft
+	$(MAKE) clean -C libs/libft
+
+.PHONY: all fclean clean re ft_reclean
 

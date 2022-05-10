@@ -8,8 +8,8 @@
                 "${workspaceFolder}/structure/**",
                 "${workspaceFolder}/structure/scene/",
                 "${workspaceFolder}/trace/**",
-                "${workspaceFolder}/libs/libft",
-                "${workspaceFolder}/srcs/utils"
+                "${workspaceFolder}/srcs/structure/scene/canvas",
+                "${workspaceFolder}/srcs/structure/vec3"
             ],
             "defines": [],
             "macFrameworkPath": [
@@ -28,7 +28,6 @@
                     "${workspaceFolder}/structure/**",
                     "${workspaceFolder}/structure/scene/",
                     "${workspaceFolder}/trace/**",
-                    "${workspaceFolder}/libs/libft",
                     "${workspaceFolder}"
                 ],
                 "limitSymbolsToIncludedHeaders": true
