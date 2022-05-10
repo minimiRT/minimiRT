@@ -28,6 +28,10 @@ SRCS_PARSING		=	parsing.c\
 						add_new_plane.c\
 						add_new_light.c\
 						$(SRCS_PARSING_UTILS)
+SRCS_TRACING		=	ray_tracing.c\
+						hit_objects.c\
+						phong_lighting.c\
+						draw_pixel.c
 SRCS_VEC3			=	add_vec3.c\
 						init_vec3.c\
 						copy_vec3.c\
@@ -65,6 +69,7 @@ SRCS_TEST_PRINT		=	print_scene.c
 SRCS				=	main.c\
 						$(SRCS_PARSING)\
 						$(SRCS_STRUCTURE)\
+						$(SRCS_TRACING)\
 						$(SRCS_UTILS)\
 						$(SRCS_TEST_PRINT)
 OBJ_DIR = objs
@@ -87,20 +92,26 @@ INCS	=	-I./srcs/parsing/parsing_utils/\
 			-I./srcs/structure/scene/world/object/plane/\
 			-I./srcs/structure/scene/world/object/sphere/\
 			-I./srcs/structure/vec3/\
+			-I./srcs/tracing/\
 			-I./srcs/utils/\
 			-I./libs/libft/\
+			-I./libs/minilibx_macos/\
 			-I./incs\
 			-I./test
 
 LIBS	=	-L./libs/libft -lft
+LIBMLX	=	-L./libs/minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(LIBS) $^ -o $@
+	$(CC) $(LIBS) $(LIBMLX) $^ -o $@
 
 $(LIBS):
 	$(MAKE) ft
+
+$(LIBMLX):
+	$(MAKE) mlx
 
 $(OBJ_DIR)/%.o: %.c $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
@@ -125,6 +136,13 @@ ft:
 ft_reclean:
 	$(MAKE) re -C libs/libft
 	$(MAKE) clean -C libs/libft
+
+mlx:
+	$(MAKE) all -C libs/minilibs_macos
+
+mlx_reclean:
+	$(MAKE) re -C libs/minilibs_macos
+	$(MAKE) clean -C libs/minilibs_macos
 
 .PHONY: all fclean clean re ft_reclean
 

@@ -13,6 +13,8 @@
 #ifndef MLX_INFO_H
 # define MLX_INFO_H
 
+# include "mlx.h"
+
 typedef struct s_mlx_info t_mlx_info;
 
 struct s_mlx_info

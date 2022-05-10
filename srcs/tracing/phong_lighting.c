@@ -1,5 +1,5 @@
-
-#include "scene.h"
+#include "tracing.h"
+#include <math.h>
 
 t_bool	is_in_shadow(t_objects *objects, t_ray light_ray, double light_len)
 {
@@ -7,7 +7,7 @@ t_bool	is_in_shadow(t_objects *objects, t_ray light_ray, double light_len)
 
 	record_for_shadow.min = 0.0;
 	record_for_shadow.max = light_len;
-	if (hit_objects(objects, light_ray, record_for_shadow))
+	if (hit_objects(objects, light_ray, &record_for_shadow))
 		return (TRUE);
 	return (FALSE);
 }
@@ -41,11 +41,16 @@ t_color3	get_diffuse_light(t_scene *scene, t_light *light, t_hit_record record)
 		return (init_vec3(0, 0, 0));
 	light_dir = get_unit_vec3(light_dir);
 	kd = fmax(dot_vec3(record.normal, light_dir), 0.0);
-	diffuse_light = mul_vec3_t(light.color, kd);
+	diffuse_light = mul_vec3_t(light->color, kd);
 	return (diffuse_light);
 }
 
-t_color3	get_specular_light(t_scene *scene, t_light *light, t_ray pixel_ray, t_hit_record record)
+t_vec3	get_reflect_dir(t_vec3 v, t_vec3 n)
+{
+	return (sub_vec3(v, mul_vec3_t(n, dot_vec3(v, n) * 2)));
+}
+
+t_color3	get_specular_light(t_light *light, t_ray pixel_ray, t_hit_record record)
 {
 	t_color3	specular_light;
 	t_vec3		view_dir;
@@ -62,7 +67,7 @@ t_color3	get_specular_light(t_scene *scene, t_light *light, t_ray pixel_ray, t_h
 	ksn = 64;
 	ks = 0.5;
 	spec = pow(fmax(dot_vec3(view_dir, reflect_dir), 0.0), ksn);
-	specular_light = mul_vec3_t(mul_vec3_t(light.color, ks), spec);
+	specular_light = mul_vec3_t(mul_vec3_t(light->color, ks), spec);
 	return (specular_light);
 }
 
@@ -74,8 +79,8 @@ t_color3	get_light_of_pixel(t_scene *scene, t_light *light, t_ray pixel_ray, t_h
 	double		brightness;
 
 	diffuse = get_diffuse_light(scene, light, record);
-	specular = get_specular_light(scene, light, pixel_ray, record);
-	brightness = light.bright_ratio * 3; // todo: replace 3 to LUMEN
+	specular = get_specular_light(light, pixel_ray, record);
+	brightness = light->bright_ratio * 3; // todo: replace 3 to LUMEN
 	ret = mul_vec3_t(add_vec3(diffuse, specular), brightness);
 	return (ret);
 }
