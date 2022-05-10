@@ -55,11 +55,9 @@ void	trace_ray_and_draw_pixel(t_scene *scene, double u, double v)
 	t_ray		pixel_ray;
 	t_color3	pixel_color;
 
-	pixel_ray = get_pixel_ray(scene->camera);
+	pixel_ray = get_pixel_ray(scene->camera, u, v);
 	pixel_color = get_pixel_color(scene, pixel_ray);
-
-	// draw pixel color(using mlx)
-	//draw_pixel(); // convert color3 to 16-bit color value
+	draw_pixel(scene, pixel_color, u, v);
 }
 
 void	drive_ray_tracing(t_scene *scene)
@@ -68,6 +66,7 @@ void	drive_ray_tracing(t_scene *scene)
 	int			y_coord;
 	double		u;
 	double		v;
+	t_mlx_info	mlx_info;
 
 	y_coord = scene->canvas.height;
 	while (--y_coord >= 0)
@@ -80,4 +79,7 @@ void	drive_ray_tracing(t_scene *scene)
 			trace_ray_and_draw_pixel(scene, u, v);
 		}
 	}
+	//mlx_put_image
+	mlx_info = scene->mlx_info;
+	mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
 }
