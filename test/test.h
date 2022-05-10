@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 12:10:24 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 12:11:51 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 19:33:34 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include "scene.h"
 
+void	print_vec3(t_vec3 *vec);
 void	print_scene(t_scene *scene);
 
 #endif

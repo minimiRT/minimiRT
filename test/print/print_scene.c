@@ -6,13 +6,13 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:58:30 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 14:10:47 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 19:33:26 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 
-static void	print_vec3(t_vec3 *vec)
+void	print_vec3(t_vec3 *vec)
 {
 	printf("\t\tx:%7.2lf\n", vec->x);
 	printf("\t\ty:%7.2lf\n", vec->y);
@@ -21,7 +21,19 @@ static void	print_vec3(t_vec3 *vec)
 
 static void	print_camera(t_camera *cam)
 {
-	(void)cam;
+	printf("CAMERA:\n");
+	printf("\torigin:\n");
+	print_vec3(&cam->origin);
+	printf("\tviewport_height: %.2lf\n", cam->viewport_height);
+	printf("\tviewport_width : %.2lf\n", cam->viewport_width);
+	printf("\thorizontal:\n");
+	print_vec3(&cam->horizontal_vec);
+	printf("\tvertical:\n");
+	print_vec3(&cam->vertical_vec);
+	printf("\tfocal:\n");
+	print_vec3(&cam->focal_vec);
+	printf("\tleft_bottom:\n");
+	print_vec3(&cam->left_bottom);
 	return ;
 }
 

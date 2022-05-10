@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 18:08:07 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 19:38:39 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	is_reverse_vec3(t_vec3 *a, t_vec3 *b)
 	return (0);
 }
 
+#include "test.h"
+
 void	set_camera(t_camera *camera, t_canvas *canvas, char **splited)
 {
 	t_vec3	z_axis;
@@ -38,7 +40,7 @@ void	set_camera(t_camera *camera, t_canvas *canvas, char **splited)
 	double	fov;
 
 	camera->origin = parse_vec3(splited[1]);
-	z_axis = mul_vec3_t(get_unit_vec3(parse_vec3(splited[2])), -1);
+	z_axis = mul_vec3_t(get_unit_vec3(parse_vec3(splited[2])), -1); //카메라 방향 0,0,0일때
 	fov = parse_double(splited[3]); // 0 <= fov < 180;
 	camera->viewport_height = VIEWPORT_HEIGHT;
 	camera->viewport_width = camera->viewport_height * canvas->aspect_ratio;
@@ -51,7 +53,7 @@ void	set_camera(t_camera *camera, t_canvas *canvas, char **splited)
 	y_axis = get_unit_vec3(cross_vec3(x_axis, z_axis));
 	camera->horizontal_vec = mul_vec3_t(x_axis, camera->viewport_width);
 	camera->vertical_vec = mul_vec3_t(y_axis, camera->viewport_height);
-	camera->focal_vec = mul_vec3_t(z_axis, (camera->viewport_width / 2) * tan((180 - fov) /2));
+	camera->focal_vec = mul_vec3_t(z_axis, (camera->viewport_width / 2) * tan((180 - fov) / 360 * M_PI));
 	camera->left_bottom = sub_vec3(camera->origin, camera->focal_vec);
 	camera->left_bottom = sub_vec3(camera->left_bottom, div_vec3_t(camera->vertical_vec, 2));
 	camera->left_bottom = sub_vec3(camera->left_bottom, div_vec3_t(camera->horizontal_vec, 2));
