@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:03:23 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 21:01:07 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 13:21:48 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ char	**ft_strsep(char const *s, char c)
 	words = _word_alloc(s, c);
 	if (words == NULL)
 		return (NULL);
-	i = 0;
+	i = -1;
 	wc = 0;
 	prev_sep = -1;
-	while (s[i])
+	while (s[++i])
 	{
 		if (s[i] == c)
 		{
@@ -64,7 +64,11 @@ char	**ft_strsep(char const *s, char c)
 			ft_strlcpy(words[wc++], s + prev_sep + 1, (i - prev_sep));
 			prev_sep = i;
 		}
-		i++;
 	}
+	words[wc] = malloc(sizeof(char) * (i - prev_sep));
+	if (words[wc] == NULL)
+		return (_free_words(words, wc));
+	ft_strlcpy(words[wc++], s + prev_sep + 1, (i - prev_sep));
+	words[wc] = NULL;
 	return (words);
 }

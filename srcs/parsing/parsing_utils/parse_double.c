@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 19:23:43 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 21:08:49 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/10 13:10:40 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,28 @@
 #include "utils.h"
 #include "parsing_utils.h"
 
+#include "test.h"
+
 double	parse_double(char *str)
 {
 	double	num;
 	double	pow;
+	double	sign;
 
+	sign = 1;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
 	num = 0;
 	while (ft_isdigit(*str))
 	{
 		num = num * 10 + (double)(*str - '0');
 		str++;
 	}
-	ft_assert(*str == '.' || *str == '\0', "Assert: It isn't float in parse_double");
+	ft_assert(*str == '.' || *str == '\0' || *str == '\n', "Assert: It isn't float in parse_double\n");
 	if (*str == '\0')
 		return (num);
 	str++;
@@ -36,5 +46,5 @@ double	parse_double(char *str)
 		pow *= 0.1;
 		str++;
 	}
-	return (num);
+	return (sign * num);
 }
