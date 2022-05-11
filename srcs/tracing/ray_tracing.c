@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:36:44 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/10 13:14:53 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/11 10:04:51 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,6 @@ static t_ray	get_pixel_ray(t_camera cam, double u, double v)
 								mul_vec3_t(cam.vertical_vec, v)), 
 							cam.origin));
 	return (ray);
-}
-
-// todo: move to structure/pixel/hit_record
-#include <math.h>
-t_hit_record	init_hit_record(void)
-{
-	t_hit_record	record;
-
-	record.min = 1e-6; // todo: replace to EPSILON
-	record.max = INFINITY;
-	return (record);
 }
 
 t_color3	get_pixel_color(t_scene *scene, t_ray pixel_ray)
@@ -66,7 +55,7 @@ void	drive_ray_tracing(t_scene *scene)
 	int			y_coord;
 	double		u;
 	double		v;
-	t_mlx_info	mlx_info;
+	t_mlx_info	*mlx_info;
 
 	y_coord = scene->canvas.height;
 	while (--y_coord >= 0)
@@ -80,6 +69,6 @@ void	drive_ray_tracing(t_scene *scene)
 		}
 	}
 	//mlx_put_image
-	mlx_info = scene->mlx_info;
-	mlx_put_image_to_window(mlx_info.mlx, mlx_info.win, mlx_info.img, 0, 0);
+	mlx_info = &scene->mlx_info;
+	mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
 }

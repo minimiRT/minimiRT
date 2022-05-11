@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 09:19:39 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 14:07:33 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/11 09:22:14 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ struct s_ray
 	t_vec3		direction;
 };
 
-t_ray		*new_ray(t_point3 *origin, t_vec3 *direction);
-void		free_ray(t_ray *ray);
-// t_point3	*new_point_from_ray_origin(t_ray *ray, double distance);
+t_ray		init_ray(t_point3 origin, t_vec3 direction);
+t_point3	get_point_ray_reach(t_ray ray, double t);
 
 #endif

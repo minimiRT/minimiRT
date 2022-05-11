@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_record.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:10:44 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 13:21:00 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/11 09:22:04 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ struct s_hit_record
 	enum e_bool	front_face;
 	t_color3	albedo;
 };
+
+t_hit_record	init_hit_record(void);
 
 #endif

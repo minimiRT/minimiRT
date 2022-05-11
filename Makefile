@@ -6,7 +6,7 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/10 20:34:32 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/11 09:24:05 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,9 @@ SRCS_OBJECT			=	new_object.c\
 						new_cylinder.c
 SRCS_WORLD			=	new_light.c\
 						$(SRCS_OBJECT)
+SRCS_PIXEL			=	init_hit_record.c\
+						get_point_ray_reach.c\
+						init_ray.c
 SRCS_SCENE			=	init_scene.c\
 						clear_scene.c\
 						$(SRCS_MLX_INFO)\

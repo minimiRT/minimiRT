@@ -1,15 +1,6 @@
 #include "tracing.h"
 #include <math.h>
 
-// todo: move to structure/pixel/ray
-t_point3	get_point_ray_reach(t_ray ray, double t)
-{
-	t_point3	point;
-
-	point = add_vec3(ray.origin, mul_vec3_t(ray.direction, t));
-	return (point);
-}
-
 t_bool	hit_sphere(t_object *object, t_ray ray, t_hit_record *record)
 {
 	t_sphere	*sphere;

@@ -3,8 +3,7 @@
 
 # include "scene.h"
 # include "enum.h"
-# include "ray.h"
-# include "hit_record.h"
+# include "pixel.h"
 # include "mlx.h"
 
 void		drive_ray_tracing(t_scene *scene);

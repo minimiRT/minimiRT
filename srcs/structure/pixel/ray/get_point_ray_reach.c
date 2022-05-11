@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_point_ray_reach.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 15:18:47 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/11 10:09:38 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/11 09:02:14 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/11 09:02:52 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "scene.h"
-#include "test.h"
-#include "tracing.h"
+#include "ray.h"
+#include "vec3.h"
 
-int	main(int argc, char **argv)
+t_point3	get_point_ray_reach(t_ray ray, double t)
 {
-	t_scene	scene;
+	t_point3	point;
 
-	init_scene(&scene);
-	parsing(&scene, argc, argv);
-	print_scene(&scene);
-	//drive_ray_tracing(&scene);
-	mlx_loop(scene.mlx_info.mlx);
-	// while (1);
-	return (0);
+	point = add_vec3(ray.origin, mul_vec3_t(ray.direction, t));
+	return (point);
 }
