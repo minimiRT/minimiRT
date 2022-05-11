@@ -6,12 +6,12 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/11 09:24:05 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/11 10:37:11 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	minirt
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	#-Wall -Werror -Wextra
 VPATH	=	$(shell ls -R)
 SRCS_PARSING_UTILS	=	ft_strsep.c\
 						parse_double.c\

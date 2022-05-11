@@ -6,25 +6,26 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:36:44 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/11 10:04:51 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/11 11:52:07 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tracing.h"
+#include "test.h"
 
-static t_ray	get_pixel_ray(t_camera cam, double u, double v)
+static t_ray	get_pixel_ray(t_camera *cam, double u, double v)
 {
 	t_ray	ray;
 
-	ray.origin = cam.origin;
+	ray.origin = cam->origin;
 	ray.direction = get_unit_vec3(
 						sub_vec3(
 							add_vec3(
 								add_vec3(
-									cam.left_bottom, 
-									mul_vec3_t(cam.horizontal_vec, u)), 
-								mul_vec3_t(cam.vertical_vec, v)), 
-							cam.origin));
+									cam->left_bottom, 
+									mul_vec3_t(cam->horizontal_vec, u)), 
+								mul_vec3_t(cam->vertical_vec, v)), 
+							cam->origin));
 	return (ray);
 }
 
@@ -39,14 +40,14 @@ t_color3	get_pixel_color(t_scene *scene, t_ray pixel_ray)
 		return (init_vec3(0, 0, 0)); // return black
 }
 
-void	trace_ray_and_draw_pixel(t_scene *scene, double u, double v)
+void	trace_ray_and_draw_pixel(t_scene *scene, double u, double v, int x, int y)
 {
 	t_ray		pixel_ray;
 	t_color3	pixel_color;
 
-	pixel_ray = get_pixel_ray(scene->camera, u, v);
+	pixel_ray = get_pixel_ray(&scene->camera, u, v);
 	pixel_color = get_pixel_color(scene, pixel_ray);
-	draw_pixel(scene, pixel_color, u, v);
+	draw_pixel(scene, pixel_color, u, v, x, y);
 }
 
 void	drive_ray_tracing(t_scene *scene)
@@ -65,7 +66,7 @@ void	drive_ray_tracing(t_scene *scene)
 		{
 			u = (double)x_coord / (scene->canvas.width - 1);
 			v = (double)y_coord / (scene->canvas.height - 1);
-			trace_ray_and_draw_pixel(scene, u, v);
+			trace_ray_and_draw_pixel(scene, u, v, x_coord, y_coord);
 		}
 	}
 	//mlx_put_image

@@ -1,6 +1,8 @@
 #include "tracing.h"
 #include <math.h>
 
+#include "test.h"
+
 t_bool	hit_sphere(t_object *object, t_ray ray, t_hit_record *record)
 {
 	t_sphere	*sphere;
