@@ -71,7 +71,10 @@ t_color3	get_light_of_pixel(t_scene *scene, t_light *light, t_ray pixel_ray, t_h
 	diffuse = get_diffuse_light(scene, light, record);
 	specular = get_specular_light(light, pixel_ray, record);
 	brightness = light->bright_ratio * LUMEN;
+	//ret = diffuse;
+	//ret = mul_vec3_t(diffuse, brightness);
 	ret = mul_vec3_t(add_vec3(diffuse, specular), brightness);
+	// ret = specular;
 	return (ret);
 }
 
@@ -92,5 +95,9 @@ t_color3	get_color_from_phong_lighting(t_scene *scene, t_ray pixel_ray, t_hit_re
 	}
 	ret_light_color = add_vec3(ret_light_color, \
 					mul_vec3_t(scene->ambient.color, scene->ambient.ratio));
+	ret_light_color = mul_vec3(ret_light_color, record.albedo);
+	ret_light_color.x = ret_light_color.x > 1 ? 1:ret_light_color.x;
+	ret_light_color.y = ret_light_color.y > 1 ? 1:ret_light_color.y;
+	ret_light_color.z = ret_light_color.z > 1 ? 1:ret_light_color.z;
 	return (ret_light_color);
 }

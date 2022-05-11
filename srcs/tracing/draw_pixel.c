@@ -8,9 +8,9 @@ int	get_hex_color(t_color3 color)
 	int	blue;
 
 	hex_color = 0;
-	red = (int)(color.x);
-	green = (int)(color.y);
-	blue = (int)(color.z);
+	red = (int)(color.x * 255.999);
+	green = (int)(color.y * 255.999);
+	blue = (int)(color.z * 255.999);
 	hex_color |= (red << 16) | (green << 8) | blue;
 	return (hex_color);
 }
