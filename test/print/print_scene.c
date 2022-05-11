@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:58:30 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 19:33:26 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:09:11 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	print_vec3(t_vec3 *vec)
 {
-	printf("\t\tx:%7.2lf\n", vec->x);
-	printf("\t\ty:%7.2lf\n", vec->y);
-	printf("\t\tz:%7.2lf\n", vec->z);
+	printf("\t\tx:%7.6lf\n", vec->x);
+	printf("\t\ty:%7.6lf\n", vec->y);
+	printf("\t\tz:%7.6lf\n", vec->z);
 }
 
-static void	print_camera(t_camera *cam)
+void	print_camera(t_camera *cam)
 {
 	printf("CAMERA:\n");
 	printf("\torigin:\n");
 	print_vec3(&cam->origin);
-	printf("\tviewport_height: %.2lf\n", cam->viewport_height);
-	printf("\tviewport_width : %.2lf\n", cam->viewport_width);
+	printf("\tviewport_height: %.6lf\n", cam->viewport_height);
+	printf("\tviewport_width : %.6lf\n", cam->viewport_width);
 	printf("\thorizontal:\n");
 	print_vec3(&cam->horizontal_vec);
 	printf("\tvertical:\n");
@@ -54,12 +54,13 @@ static void	print_ambient(t_ambient *ambient)
 	return ;
 }
 
-static void	print_sphere(t_sphere *sphere)
+void	print_sphere(t_sphere *sphere)
 {
 	static int	count;
 
 	printf("sphere%d:\n", count++);
-	printf("\tradius: %.2lf\n", sphere->radius);
+	printf("\tradius: %.6lf\n", sphere->radius);
+	printf("\tradius_2: %.6lf\n", sphere->radius_square);
 	printf("\tcenter:\n");
 	print_vec3(&sphere->center);
 }
@@ -73,8 +74,8 @@ static void	print_cylinder(t_cylinder *cylinder)
 	print_vec3(&cylinder->center);
 	printf("\torientation:\n");
 	print_vec3(&cylinder->orientation);
-	printf("\tradius: %.2lf\n", cylinder->radius);
-	printf("\theight: %.2lf\n", cylinder->height);
+	printf("\tradius: %.6lf\n", cylinder->radius);
+	printf("\theight: %.6lf\n", cylinder->height);
 }
 static void	print_plane(t_plane *plane)
 {

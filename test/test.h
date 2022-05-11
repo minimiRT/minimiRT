@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 12:10:24 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 19:33:34 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:02:42 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@
 
 void	print_vec3(t_vec3 *vec);
 void	print_scene(t_scene *scene);
+void	write_color(t_color3 *pixel_color);
+void	print_sphere(t_sphere *sphere);
 
 #endif

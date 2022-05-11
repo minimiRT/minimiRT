@@ -3,6 +3,12 @@
 
 #include "test.h"
 
+void	print_ray(t_ray *ray)
+{
+	printf("ray :\n");
+	print_vec3(&ray->direction);
+}
+
 t_bool	hit_sphere(t_object *object, t_ray ray, t_hit_record *record)
 {
 	t_sphere	*sphere;
@@ -21,7 +27,16 @@ t_bool	hit_sphere(t_object *object, t_ray ray, t_hit_record *record)
 	c = dot_vec3(co, co) - sphere->radius_square; 
 	discriminant = half_b * half_b - a * c;
 	if (discriminant < 0)
+	{
+		// printf("co:\n");
+		// print_vec3(&co);
+		// printf("a: %lf, half_b: %lf, c: %lf\n", a, half_b, c);
+		// print_ray(&ray);
+		// print_sphere(sphere);
+		// printf("in discriminant\n");
+		// exit(1);
 		return (FALSE);
+	}
 	sqrtd = sqrt(discriminant);
 	root = (-half_b - sqrtd) / a;
 	if (root < record->min || record->max < root)
@@ -58,6 +73,8 @@ t_bool	hit_objects(t_objects *objects, t_ray ray, t_hit_record *record)
 	t_bool			is_hitting;
 	t_hit_record	tmp_record;
 
+	// return (TRUE);
+	tmp_record = init_hit_record(); ///////여기
 	is_hitting = FALSE;
 	while (objects)
 	{

@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 20:38:48 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/11 13:12:25 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ void	set_camera(t_camera *camera, t_canvas *canvas, char **splited)
 		temp_axis = init_vec3(0, 0, -1);
 	else if (is_reverse_vec3(temp_axis, z_axis))
 		temp_axis = init_vec3(0, 0, 1);
-	x_axis = get_unit_vec3(cross_vec3(z_axis, temp_axis));
-	y_axis = get_unit_vec3(cross_vec3(x_axis, z_axis));
+	x_axis = get_unit_vec3(cross_vec3(temp_axis, z_axis));
+	y_axis = get_unit_vec3(cross_vec3(z_axis, x_axis));
 	camera->horizontal_vec = mul_vec3_t(x_axis, camera->viewport_width);
 	camera->vertical_vec = mul_vec3_t(y_axis, camera->viewport_height);
 	camera->focal_vec = mul_vec3_t(z_axis, (camera->viewport_width / 2) * tan((180 - fov) / 360 * M_PI));
-	camera->left_bottom = sub_vec3(camera->origin, camera->focal_vec);
+	camera->left_bottom = camera->origin;
+	camera->left_bottom = sub_vec3(camera->left_bottom, camera->focal_vec);
 	camera->left_bottom = sub_vec3(camera->left_bottom, div_vec3_t(camera->vertical_vec, 2));
 	camera->left_bottom = sub_vec3(camera->left_bottom, div_vec3_t(camera->horizontal_vec, 2));
 }

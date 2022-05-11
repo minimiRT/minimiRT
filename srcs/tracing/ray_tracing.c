@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:36:44 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/11 11:52:07 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/11 19:16:46 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	trace_ray_and_draw_pixel(t_scene *scene, double u, double v, int x, int y)
 	pixel_ray = get_pixel_ray(&scene->camera, u, v);
 	pixel_color = get_pixel_color(scene, pixel_ray);
 	draw_pixel(scene, pixel_color, u, v, x, y);
+	// write_color(&pixel_color);
 }
 
 void	drive_ray_tracing(t_scene *scene)
@@ -58,6 +59,7 @@ void	drive_ray_tracing(t_scene *scene)
 	double		v;
 	t_mlx_info	*mlx_info;
 
+	printf("P3\n%d %d\n255\n", scene->canvas.width, scene->canvas.height);
 	y_coord = scene->canvas.height;
 	while (--y_coord >= 0)
 	{
@@ -69,7 +71,7 @@ void	drive_ray_tracing(t_scene *scene)
 			trace_ray_and_draw_pixel(scene, u, v, x_coord, y_coord);
 		}
 	}
-	//mlx_put_image
-	mlx_info = &scene->mlx_info;
-	mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
+	// mlx_put_image
+	// mlx_info = &scene->mlx_info;
+	// mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
 }

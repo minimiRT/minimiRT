@@ -75,6 +75,8 @@ t_color3	get_light_of_pixel(t_scene *scene, t_light *light, t_ray pixel_ray, t_h
 	return (ret);
 }
 
+#include "test.h"
+
 t_color3	get_color_from_phong_lighting(t_scene *scene, t_ray pixel_ray, t_hit_record record)
 {
 	t_color3	ret_light_color;

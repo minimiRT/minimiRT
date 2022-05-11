@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   write_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 15:18:47 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/11 19:16:12 by mypark           ###   ########.fr       */
+/*   Created: 2022/05/03 17:50:06 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/11 17:23:56 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "scene.h"
-#include "test.h"
-#include "tracing.h"
+#include <stdio.h>
+#include "vec3.h"
 
-int	main(int argc, char **argv)
+// [0,1] 로 되어있는 rgb 값을 각각 [0,255]에 맵핑 해서 출력.
+void    write_color(t_color3 *pixel_color)
 {
-	t_scene	scene;
-
-	init_scene(&scene);
-	parsing(&scene, argc, argv);
-	// print_scene(&scene);
-	drive_ray_tracing(&scene);
-	mlx_loop(scene.mlx_info.mlx);
-	// while (1);
-	return (0);
+    printf("%d %d %d\n", (int)(255.999 * pixel_color->x),   // 왜 255.999?
+                        (int)(255.999 * pixel_color->y),
+                        (int)(255.999 * pixel_color->z));
 }
