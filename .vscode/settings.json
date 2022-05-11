@@ -9,6 +9,10 @@
 		"canvas.h": "c",
 		"world.h": "c",
 		"camera.h": "c",
-		"object.h": "c"
+		"object.h": "c",
+		"algorithm": "c",
+		"chrono": "c",
+		"limits": "c",
+		"ratio": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:36:44 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/11 19:16:46 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/11 19:23:41 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	drive_ray_tracing(t_scene *scene)
 	double		v;
 	t_mlx_info	*mlx_info;
 
-	printf("P3\n%d %d\n255\n", scene->canvas.width, scene->canvas.height);
+	// printf("P3\n%d %d\n255\n", scene->canvas.width, scene->canvas.height);
 	y_coord = scene->canvas.height;
 	while (--y_coord >= 0)
 	{
@@ -72,6 +72,6 @@ void	drive_ray_tracing(t_scene *scene)
 		}
 	}
 	// mlx_put_image
-	// mlx_info = &scene->mlx_info;
-	// mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
+	mlx_info = &scene->mlx_info;
+	mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
 }

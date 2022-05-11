@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/11 18:09:55 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/11 19:32:34 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	add_new_sphere(t_objects **objects, char **splited)
 	ft_assert(object != FT_NULL, "Assert: malloc failed in add_new_sphere");
 	sphere->center = parse_vec3(splited[1]);
 	sphere->radius = (parse_positive_double(splited[2]) / 2);
-	sphere->radius_square = sphere->radius * sphere->radius;///////////여기
+	sphere->radius_square = sphere->radius * sphere->radius;
 	object->albedo = parse_color(splited[3]);
 	object->element = sphere;
 	object->type = SPHERE;
