@@ -22,7 +22,6 @@ struct s_trace
 {
 	t_ray			ray;
 	t_hit_record	record;
-	
 };
 
 struct s_pixel

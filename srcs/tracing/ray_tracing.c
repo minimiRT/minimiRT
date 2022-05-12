@@ -31,8 +31,7 @@ static void	set_pixel_ray(t_camera *cam, t_pixel *pixel)
 
 static void	set_pixel_color(t_scene *scene, t_pixel *pixel)
 {
-	pixel->tracing.record = init_hit_record(); // todo: move to hit_objects ?
-	if (hit_objects(scene->world.objects, &(pixel->tracing))) // pixel_ray // hit_objects_with_recording
+	if (hit_objects(scene->world.objects, &(pixel->tracing))) // todo: rename to hit_objects_with_recording ?
 		pixel->color = get_color_from_phong_lighting(scene, &(pixel->tracing));
 	else
 		pixel->color = init_vec3(0, 0, 0);
@@ -50,11 +49,9 @@ void	drive_ray_tracing(t_scene *scene)
 	t_pixel		pixel;
 	t_mlx_info	*mlx_info;
 
-	//y_coord = scene->canvas.height;
 	pixel.y_coord = scene->canvas.height;
 	while (--(pixel.y_coord) >= 0)
 	{
-		//x_coord = -1;
 		pixel.x_coord = -1;
 		while (++(pixel.x_coord) < scene->canvas.width)
 		{
