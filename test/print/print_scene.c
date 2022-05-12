@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:58:30 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/11 18:09:11 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/12 10:40:19 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	print_plane(t_plane *plane)
 	printf("\tcenter:\n");
 	print_vec3(&plane->center);
 	printf("\torientation:\n");
-	print_vec3(&plane->orientation);
+	print_vec3(&plane->normal);
 }
 
 static void	print_objects(t_objects *objects)

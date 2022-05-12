@@ -6,12 +6,13 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/11 17:27:27 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/12 10:52:43 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	minirt
-CFLAGS	=	#-Wall -Werror -Wextra
+CFLAGS	=	-fsanitize=address -g #-Wall -Werror -Wextra
+LDFLAGS	=	-fsanitize=address -g #-Wall -Werror -Wextra
 VPATH	=	$(shell ls -R)
 SRCS_PARSING_UTILS	=	ft_strsep.c\
 						parse_double.c\
@@ -30,6 +31,7 @@ SRCS_PARSING		=	parsing.c\
 						$(SRCS_PARSING_UTILS)
 SRCS_TRACING		=	ray_tracing.c\
 						hit_objects.c\
+						hit_plane.c\
 						phong_lighting.c\
 						draw_pixel.c
 SRCS_VEC3			=	add_vec3.c\
@@ -109,7 +111,7 @@ LIBMLX	=	-L./libs/minilibx_macos -lmlx -framework OpenGL -framework AppKit
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(LIBS) $(LIBMLX) $^ -o $@
+	$(CC) $(LDFLAGS) $(LIBS) $(LIBMLX) $^ -o $@ 
 
 $(LIBS):
 	$(MAKE) ft
