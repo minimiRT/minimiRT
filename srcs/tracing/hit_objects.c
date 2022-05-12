@@ -15,7 +15,7 @@
 t_bool	hit_object(t_object *object, t_trace *tracing)
 {
 	t_bool	is_hitting;
-	
+
 	is_hitting = FALSE;
 	if (object->type == SPHERE)
 		is_hitting = hit_sphere(object, tracing);
