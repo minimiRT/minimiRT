@@ -45,20 +45,22 @@ static void	trace_ray_and_draw_pixel(t_scene *scene, t_pixel *pixel)
 
 void	drive_ray_tracing(t_scene *scene)
 {
+	t_canvas	canvas;
 	t_pixel		pixel;
 	t_mlx_info	*mlx_info;
 
-	pixel.y_coord = scene->canvas.height;
+	canvas = scene->canvas;
+	pixel.y_coord = canvas.height;
 	while (--(pixel.y_coord) >= 0)
 	{
 		pixel.x_coord = -1;
-		while (++(pixel.x_coord) < scene->canvas.width)
+		while (++(pixel.x_coord) < canvas.width)
 		{
-			pixel.x_ratio = (double)(pixel.x_coord) / (scene->canvas.width - 1);
-			pixel.y_ratio = (double)(pixel.y_coord) / (scene->canvas.height - 1);
+			pixel.x_ratio = (double)(pixel.x_coord) / (canvas.width - 1);
+			pixel.y_ratio = (double)(pixel.y_coord) / (canvas.height - 1);
 			trace_ray_and_draw_pixel(scene, &pixel);
 		}
 	}
-	mlx_info = &scene->mlx_info;
+	mlx_info = &(scene->mlx_info);
 	mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
 }
