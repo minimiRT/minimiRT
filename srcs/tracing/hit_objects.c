@@ -12,7 +12,7 @@
 
 #include "tracing.h"
 
-t_bool	hit_object(t_object *object, t_trace *tracing)
+static t_bool	hit_object(t_object *object, t_trace *tracing)
 {
 	t_bool	is_hitting;
 

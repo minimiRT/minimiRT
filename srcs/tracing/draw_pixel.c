@@ -12,7 +12,7 @@
 
 #include "tracing.h"
 
-int	get_hex_color(t_color3 color)
+static int	get_hex_color(t_color3 color)
 {
 	int	hex_color;
 	int	red;
