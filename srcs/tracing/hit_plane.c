@@ -30,7 +30,8 @@ t_bool	hit_plane(t_object *object, t_trace *tracing)
 	tracing->record.hit_point = get_point_ray_reach(tracing->ray, t);
 	tracing->record.distance_from_ray_origin = t;
 	tracing->record.normal = pl->normal;
-	tracing->record.is_front_face = (dot_vec3(tracing->ray.direction, tracing->record.normal) < 0);
+	tracing->record.is_front_face = \
+			(dot_vec3(tracing->ray.direction, tracing->record.normal) < 0);
 	if (tracing->record.is_front_face == FALSE)
 		tracing->record.normal = mul_vec3_t(tracing->record.normal, -1);
 	tracing->record.albedo = object->albedo;
