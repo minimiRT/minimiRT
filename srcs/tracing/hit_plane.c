@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 09:11:57 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/12 10:33:15 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:57:49 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_bool	hit_plane(t_object *object, t_ray ray, t_hit_record *record)
 
 	pl = object->element;
 	product = dot_vec3(pl->normal, ray.direction);
-	if (product == 0)
+	if (product >= 0)
 		return (FALSE);
 	origin_sub = sub_vec3(pl->center, ray.origin);
 	t = dot_vec3(pl->normal, origin_sub) / product;
