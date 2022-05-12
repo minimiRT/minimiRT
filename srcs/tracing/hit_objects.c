@@ -70,11 +70,10 @@ t_bool	hit_objects(t_objects *objects, t_ray ray, t_hit_record *record)
 	is_hitting = FALSE;
 	while (objects)
 	{
-		if (hit_object(objects->content, ray, &tmp_record))
+		if (hit_object(objects->content, ray, record))
 		{
 			is_hitting = TRUE;
-			tmp_record.max = tmp_record.distance_from_ray_origin;
-			*record = tmp_record;
+			record->max = record->distance_from_ray_origin;
 		}
 		objects = objects->next;
 	}
