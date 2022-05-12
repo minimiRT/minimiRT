@@ -13,65 +13,56 @@
 #include "tracing.h"
 #include "test.h"
 
-static t_ray	get_pixel_ray(t_camera *cam, double u, double v)
+static void	set_pixel_ray(t_camera *cam, t_pixel *pixel)
 {
 	t_ray	ray;
 
 	ray.origin = cam->origin;
-	ray.direction = get_unit_vec3(
-						sub_vec3(
-							add_vec3(
-								add_vec3(
-									cam->left_bottom, 
-									mul_vec3_t(cam->horizontal_vec, u)), 
-								mul_vec3_t(cam->vertical_vec, v)), 
-							cam->origin));
-	return (ray);
+	ray.direction = get_unit_vec3(\
+				sub_vec3(\
+					add_vec3(\
+						add_vec3(\
+							cam->left_bottom, \
+							mul_vec3_t(cam->horizontal_vec, pixel->x_ratio)), \
+						mul_vec3_t(cam->vertical_vec, pixel->y_ratio)), \
+					cam->origin));
+	pixel->tracing.ray = ray;
 }
 
-t_color3	get_pixel_color(t_scene *scene, t_ray pixel_ray)
+static void	set_pixel_color(t_scene *scene, t_pixel *pixel)
 {
-	t_hit_record	record;
-
-	record = init_hit_record();
-	if (hit_objects(scene->world.objects, pixel_ray, &record))
-		return (get_color_from_phong_lighting(scene, pixel_ray, record));
+	pixel->tracing.record = init_hit_record(); // todo: move to hit_objects ?
+	if (hit_objects(scene->world.objects, &(pixel->tracing))) // pixel_ray // hit_objects_with_recording
+		pixel->color = get_color_from_phong_lighting(scene, &(pixel->tracing));
 	else
-		return (init_vec3(0, 0, 0)); // return black
+		pixel->color = init_vec3(0, 0, 0);
 }
 
-void	trace_ray_and_draw_pixel(t_scene *scene, double u, double v, int x, int y)
+static void	trace_ray_and_draw_pixel(t_scene *scene, t_pixel *pixel)
 {
-	t_ray		pixel_ray;
-	t_color3	pixel_color;
-
-	pixel_ray = get_pixel_ray(&scene->camera, u, v);
-	pixel_color = get_pixel_color(scene, pixel_ray);
-	draw_pixel(scene, pixel_color, u, v, x, y);
-	// write_color(&pixel_color);
+	set_pixel_ray(&scene->camera, pixel);
+	set_pixel_color(scene, pixel);
+	draw_pixel(scene, pixel);
 }
 
 void	drive_ray_tracing(t_scene *scene)
 {
-	int			x_coord;
-	int			y_coord;
-	double		u;
-	double		v;
+	t_pixel		pixel;
 	t_mlx_info	*mlx_info;
 
-	// printf("P3\n%d %d\n255\n", scene->canvas.width, scene->canvas.height);
-	y_coord = scene->canvas.height;
-	while (--y_coord >= 0)
+	//y_coord = scene->canvas.height;
+	pixel.y_coord = scene->canvas.height;
+	while (--(pixel.y_coord) >= 0)
 	{
-		x_coord = -1;
-		while (++x_coord < scene->canvas.width)
+		//x_coord = -1;
+		pixel.x_coord = -1;
+		while (++(pixel.x_coord) < scene->canvas.width)
 		{
-			u = (double)x_coord / (scene->canvas.width - 1);
-			v = (double)y_coord / (scene->canvas.height - 1);
-			trace_ray_and_draw_pixel(scene, u, v, x_coord, y_coord);
+			pixel.x_ratio = (double)(pixel.x_coord) / (scene->canvas.width - 1);
+			pixel.y_ratio = (double)(pixel.y_coord) / (scene->canvas.height - 1);
+			trace_ray_and_draw_pixel(scene, &pixel);
 		}
 	}
-	// mlx_put_image
 	mlx_info = &scene->mlx_info;
 	mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
 }

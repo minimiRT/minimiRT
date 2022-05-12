@@ -16,11 +16,22 @@
 # include "hit_record.h"
 
 typedef struct s_pixel	t_pixel;
+typedef struct s_trace	t_trace;
 
-struct s_pixel
+struct s_trace
 {
 	t_ray			ray;
 	t_hit_record	record;
+	
+};
+
+struct s_pixel
+{
+	int				x_coord;
+	int				y_coord;
+	double			x_ratio;
+	double			y_ratio;
+	struct s_trace	tracing;
 	t_color3		color;
 };
 

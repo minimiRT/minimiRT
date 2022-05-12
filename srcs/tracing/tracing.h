@@ -6,9 +6,12 @@
 # include "pixel.h"
 # include "mlx.h"
 
+// t_tracing
+// hit_objects for considering light hit
+
 void		drive_ray_tracing(t_scene *scene);
-t_bool		hit_objects(t_objects *objects, t_ray ray, t_hit_record *record);
-t_color3	get_color_from_phong_lighting(t_scene *scene, t_ray pixel_ray, t_hit_record record);
-void		draw_pixel(t_scene *scene, t_color3 color, double u, double v, int x, int y);
+t_bool		hit_objects(t_objects *objects, t_trace *tracing);
+t_color3	get_color_from_phong_lighting(t_scene *scene, t_trace *tracing);
+void		draw_pixel(t_scene *scene, t_pixel *pixel);
 
 #endif

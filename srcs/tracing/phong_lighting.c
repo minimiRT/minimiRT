@@ -4,11 +4,15 @@
 
 t_bool	is_in_shadow(t_objects *objects, t_ray light_ray, double light_len)
 {
+	t_trace			tracing_light;
 	t_hit_record	record_for_shadow;
 
+	tracing_light.ray = light_ray;
 	record_for_shadow.min = 0.0;
 	record_for_shadow.max = light_len;
-	if (hit_objects(objects, light_ray, &record_for_shadow))
+	tracing_light.record = record_for_shadow;
+	//if (hit_objects(objects, light_ray, &record_for_shadow))
+	if (hit_objects(objects, &(tracing_light)))
 		return (TRUE);
 	return (FALSE);
 }
@@ -61,26 +65,30 @@ t_color3	get_specular_light(t_light *light, t_ray pixel_ray, t_hit_record record
 	return (specular_light);
 }
 
-t_color3	get_light_of_pixel(t_scene *scene, t_light *light, t_ray pixel_ray, t_hit_record record)
+//t_color3	get_light_of_pixel(t_scene *scene, t_light *light, t_ray pixel_ray, t_hit_record record)
+t_color3	get_light_of_pixel(t_scene *scene, t_light *light, t_trace *tracing)
 {
 	t_color3	ret;
 	t_color3	diffuse;
 	t_color3	specular;
 	double		brightness;
 
-	diffuse = get_diffuse_light(scene, light, record);
-	specular = get_specular_light(light, pixel_ray, record);
+	//diffuse = get_diffuse_light(scene, light, record);
+	diffuse = get_diffuse_light(scene, light, tracing->record);
+
+	//specular = get_specular_light(light, pixel_ray, record);
+	specular = get_specular_light(light, tracing->ray, tracing->record);
+
 	brightness = light->bright_ratio * LUMEN;
-	//ret = diffuse;
-	//ret = mul_vec3_t(diffuse, brightness);
+
 	ret = mul_vec3_t(add_vec3(diffuse, specular), brightness);
-	// ret = specular;
 	return (ret);
 }
 
-#include "test.h"
+#include "test.h" // todo: remove
 
-t_color3	get_color_from_phong_lighting(t_scene *scene, t_ray pixel_ray, t_hit_record record)
+//t_color3	get_color_from_phong_lighting(t_scene *scene, t_ray pixel_ray, t_hit_record record)
+t_color3	get_color_from_phong_lighting(t_scene *scene, t_trace *tracing)
 {
 	t_color3	ret_light_color;
 	t_lights	*lights;
@@ -90,12 +98,12 @@ t_color3	get_color_from_phong_lighting(t_scene *scene, t_ray pixel_ray, t_hit_re
 	while (lights)
 	{
 		ret_light_color = add_vec3(ret_light_color, \
-								get_light_of_pixel(scene, lights->content, pixel_ray, record));
+								get_light_of_pixel(scene, lights->content, tracing)); //get_light_of_pixel(scene, lights->content, pixel_ray, record));
 		lights = lights->next;
 	}
 	ret_light_color = add_vec3(ret_light_color, \
 					mul_vec3_t(scene->ambient.color, scene->ambient.ratio));
-	ret_light_color = mul_vec3(ret_light_color, record.albedo);
+	ret_light_color = mul_vec3(ret_light_color, tracing->record.albedo);
 	ret_light_color.x = ret_light_color.x > 1 ? 1:ret_light_color.x;
 	ret_light_color.y = ret_light_color.y > 1 ? 1:ret_light_color.y;
 	ret_light_color.z = ret_light_color.z > 1 ? 1:ret_light_color.z;
