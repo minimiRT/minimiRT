@@ -12,7 +12,8 @@
 
 #include "tracing.h"
 
-t_bool	hit_plane(t_object *object, t_ray ray, t_hit_record *record)
+//t_bool	hit_plane(t_object *object, t_ray ray, t_hit_record *record)
+t_bool	hit_plane(t_object *object, t_trace *tracing)
 {
 	t_vec3	origin_sub;
 	t_plane	*pl;
@@ -20,19 +21,19 @@ t_bool	hit_plane(t_object *object, t_ray ray, t_hit_record *record)
 	double	product;
 
 	pl = object->element;
-	product = dot_vec3(pl->normal, ray.direction);
+	product = dot_vec3(pl->normal, tracing->ray.direction);
 	if (product >= 0)
 		return (FALSE);
-	origin_sub = sub_vec3(pl->center, ray.origin);
+	origin_sub = sub_vec3(pl->center, tracing->ray.origin);
 	t = dot_vec3(pl->normal, origin_sub) / product;
-	if (t < record->min || record->max < t)
+	if (t < tracing->record.min || tracing->record.max < t)
 		return (FALSE);
-	record->hit_point = get_point_ray_reach(ray, t);
-	record->distance_from_ray_origin = t;
-	record->normal = pl->normal;
-	record->front_face = (dot_vec3(ray.direction, record->normal) < 0);
-	if (record->front_face == FALSE)
-		record->normal = mul_vec3_t(record->normal, -1);
-	record->albedo = object->albedo;
+	tracing->record.hit_point = get_point_ray_reach(tracing->ray, t);
+	tracing->record.distance_from_ray_origin = t;
+	tracing->record.normal = pl->normal;
+	tracing->record.front_face = (dot_vec3(tracing->ray.direction, tracing->record.normal) < 0);
+	if (tracing->record.front_face == FALSE)
+		tracing->record.normal = mul_vec3_t(tracing->record.normal, -1);
+	tracing->record.albedo = object->albedo;
 	return (TRUE);
 }
