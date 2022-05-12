@@ -31,6 +31,7 @@ SRCS_PARSING		=	parsing.c\
 						$(SRCS_PARSING_UTILS)
 SRCS_TRACING		=	ray_tracing.c\
 						hit_objects.c\
+						hit_sphere.c\
 						hit_plane.c\
 						phong_lighting.c\
 						draw_pixel.c

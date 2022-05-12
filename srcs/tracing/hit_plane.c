@@ -12,7 +12,6 @@
 
 #include "tracing.h"
 
-//t_bool	hit_plane(t_object *object, t_ray ray, t_hit_record *record)
 t_bool	hit_plane(t_object *object, t_trace *tracing)
 {
 	t_vec3	origin_sub;

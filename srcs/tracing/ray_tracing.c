@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "tracing.h"
-#include "test.h"
 
 static void	set_pixel_ray(t_camera *cam, t_pixel *pixel)
 {
@@ -31,7 +30,7 @@ static void	set_pixel_ray(t_camera *cam, t_pixel *pixel)
 
 static void	set_pixel_color(t_scene *scene, t_pixel *pixel)
 {
-	if (hit_objects(scene->world.objects, &(pixel->tracing))) // todo: rename to hit_objects_with_recording ?
+	if (hit_objects(scene->world.objects, &(pixel->tracing)))
 		pixel->color = get_color_from_phong_lighting(scene, &(pixel->tracing));
 	else
 		pixel->color = init_vec3(0, 0, 0);
