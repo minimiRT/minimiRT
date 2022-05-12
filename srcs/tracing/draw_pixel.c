@@ -27,5 +27,5 @@ void	draw_pixel(t_scene *scene, t_color3 color, double u, double v, int x, int y
 	// y_coord = v * (double)(scene->canvas.height - 1);
 	hex_color = get_hex_color(color);
 	
-	img[((scene->canvas.height - y) * scene->canvas.width) + x] = hex_color;
+	img[((scene->canvas.height - 1 - y) * scene->canvas.width) + x] = hex_color;
 }

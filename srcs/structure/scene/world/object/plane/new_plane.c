@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:16:44 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 11:02:54 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/12 10:25:27 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ t_plane	*new_plane(t_point3 center, t_vec3 orientation)
 	plane = malloc(sizeof(t_plane));
 	ft_assert(plane != FT_NULL, "Assert: malloc failed in new_plane\n");
 	plane->center = center;
-	plane->orientation = orientation;
+	plane->normal = orientation;
 	return (plane);
 }
