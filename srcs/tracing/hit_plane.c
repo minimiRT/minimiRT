@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 09:11:57 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/12 11:57:49 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/12 14:44:19 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_bool	hit_plane(t_object *object, t_ray ray, t_hit_record *record)
 		return (FALSE);
 	origin_sub = sub_vec3(pl->center, ray.origin);
 	t = dot_vec3(pl->normal, origin_sub) / product;
+	if (t < record->min || record->max < t)
+		return (FALSE);
 	record->hit_point = get_point_ray_reach(ray, t);
 	record->distance_from_ray_origin = t;
 	record->normal = pl->normal;
