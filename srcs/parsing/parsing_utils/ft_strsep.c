@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:03:23 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 13:21:48 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:04:05 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	**_word_alloc(char const *s, char c)
 			wc++;
 		s++;
 	}
-	words = malloc(sizeof(char *) * (wc + 1));
+	words = malloc(sizeof(char *) * (wc + 2));
 	if (words == NULL)
 		return (NULL);
 	words[wc] = NULL;

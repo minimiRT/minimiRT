@@ -48,6 +48,8 @@ t_bool	hit_object(t_object *object, t_trace *tracing)
 	is_hitting = FALSE;
 	if (object->type == SPHERE)
 		is_hitting = hit_sphere(object, tracing);
+	if (object->type == PLANE)
+		is_hitting = hit_plane(object, ray, record);
 	return (is_hitting);
 }
 

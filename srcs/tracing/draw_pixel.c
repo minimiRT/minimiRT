@@ -21,8 +21,9 @@ void	draw_pixel(t_scene *scene, t_pixel *pixel)
 	int	hex_color;
 
 	img = (int *)(scene->mlx_info.data_addr);
+	// x_coord = u * (double)(scene->canvas.width - 1);
+	// y_coord = v * (double)(scene->canvas.height - 1);
 	hex_color = get_hex_color(pixel->color);
-	img[((scene->canvas.height - pixel->y_coord) * scene->canvas.width) \
+	img[(((scene->canvas.height - 1) - pixel->y_coord) * scene->canvas.width) \
 		+ pixel->x_coord] = hex_color;
-	//img[(((scene->canvas.height - 1) - pixel->y_coord) * scene->canvas.width) + pixel->x_coord] = hex_color;
 }
