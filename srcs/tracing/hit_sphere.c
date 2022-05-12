@@ -53,8 +53,8 @@ t_bool	hit_sphere(t_object *object, t_trace *tracing)
 	tracing->record.hit_point = get_point_ray_reach(tracing->ray, root);
 	tracing->record.normal = get_unit_vec3(sub_vec3(tracing->record.hit_point, sphere->center));
 	// todo: rename front_face to is_front_face
-	tracing->record.front_face = (dot_vec3(tracing->ray.direction, tracing->record.normal) < 0);
-	if (tracing->record.front_face == FALSE)
+	tracing->record.is_front_face = (dot_vec3(tracing->ray.direction, tracing->record.normal) < 0);
+	if (tracing->record.is_front_face == FALSE)
 		tracing->record.normal = mul_vec3_t(tracing->record.normal, -1);
 	tracing->record.albedo = object->albedo;
 	return (TRUE);

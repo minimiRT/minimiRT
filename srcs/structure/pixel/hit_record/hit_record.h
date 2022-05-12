@@ -24,7 +24,7 @@ struct s_hit_record
 	double		min;
 	double		max;
 	double		distance_from_ray_origin;
-	enum e_bool	front_face;
+	enum e_bool	is_front_face;
 	t_color3	albedo;
 };
 
