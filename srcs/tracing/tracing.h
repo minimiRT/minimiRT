@@ -18,6 +18,17 @@
 # include "pixel.h"
 # include "mlx.h"
 
+typedef struct s_hit_point_to_light t_hit_point_to_light;
+
+struct s_hit_point_to_light
+{
+	t_vec3	vec;
+	t_vec3	unit_vec;
+	double	len;
+	t_ray	ray;
+};
+
+
 void		drive_ray_tracing(t_scene *scene);
 t_color3	get_color_from_phong_lighting(t_scene *scene, t_trace *tracing);
 void		draw_pixel(t_scene *scene, t_pixel *pixel);

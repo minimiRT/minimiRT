@@ -14,110 +14,121 @@
 #include "constant.h"
 #include <math.h>
 
-t_bool	is_in_shadow(t_objects *objects, t_ray light_ray, double light_len)
+t_bool	is_in_shadow(t_objects *objects, t_hit_point_to_light to_light)
 {
 	t_trace			tracing_light;
 	t_hit_record	record_for_shadow;
 
-	tracing_light.ray = light_ray;
+	tracing_light.ray = to_light.ray;
 	record_for_shadow.min = 0.0;
-	record_for_shadow.max = light_len;
+	record_for_shadow.max = to_light.len;
 	tracing_light.record = record_for_shadow;
-	//if (hit_objects(objects, light_ray, &record_for_shadow))
 	if (hit_objects(objects, &(tracing_light)))
 		return (TRUE);
 	return (FALSE);
 }
 
-t_color3	get_diffuse_light(t_scene *scene, t_light *light, t_hit_record record)
+t_color3	get_diffuse_light(t_light *light, t_hit_record record, t_hit_point_to_light to_light)
 {
 	t_color3	diffuse_light;
-	t_vec3		light_dir;
-	double		light_len;
-	t_ray		light_ray;
-	double		kd;
+	double		diffuse_ratio;
 
-	light_dir = sub_vec3(light->origin, record.hit_point); // todo: replace light_dir to vec_to_light ?
-	light_len = get_vec3_len(light_dir);
-	light_ray = init_ray(
-		add_vec3(
-			record.hit_point, 
-			mul_vec3_t(record.normal, EPSILON)), light_dir);
-	if (is_in_shadow(scene->world.objects, light_ray, light_len))
-		return (init_vec3(0, 0, 0));
-	light_dir = get_unit_vec3(light_dir);
-	kd = fmax(dot_vec3(record.normal, light_dir), 0.0);
-	diffuse_light = mul_vec3_t(light->color, kd);
+	diffuse_ratio = fmax(dot_vec3(record.normal, to_light.unit_vec), 0.0);
+	diffuse_light = mul_vec3_t(light->color, diffuse_ratio);
 	return (diffuse_light);
 }
 
-t_vec3	get_reflect_dir(t_vec3 v, t_vec3 n)
+static t_vec3	get_vec_reflect(t_vec3 vec_to_light, t_vec3 vec_normal)
 {
-	return (sub_vec3(v, mul_vec3_t(n, dot_vec3(v, n) * 2)));
+	t_vec3	vec_reflect;
+
+	vec_reflect = sub_vec3(\
+		mul_vec3_t(\
+			vec_normal, \
+			2 * dot_vec3(vec_to_light, vec_normal)), \
+		vec_to_light);
+	return (vec_reflect);
 }
 
-t_color3	get_specular_light(t_light *light, t_ray pixel_ray, t_hit_record record)
+static t_vec3	get_vec_reflect_reversed(t_vec3 vec_to_light, t_vec3 vec_normal)
 {
-	t_color3	specular_light;
-	t_vec3		view_dir;
-	t_vec3		reflect_dir;
-	double		spec;
-	double		ksn;
-	double		ks;
+	t_vec3	vec_reflect_reversed;
 
-	t_vec3		light_dir;
-
-	light_dir = get_unit_vec3(sub_vec3(light->origin, record.hit_point)); // used before(diffuse_light)
-	view_dir = get_unit_vec3(mul_vec3_t(pixel_ray.direction, -1));
-	reflect_dir = get_reflect_dir(mul_vec3_t(light_dir, -1), record.normal);
-	ksn = 64;
-	ks = 0.5;
-	spec = pow(fmax(dot_vec3(view_dir, reflect_dir), 0.0), ksn);
-	specular_light = mul_vec3_t(mul_vec3_t(light->color, ks), spec);
-	return (specular_light);
+	vec_reflect_reversed = sub_vec3(\
+		vec_to_light, \
+		mul_vec3_t(\
+			vec_normal, \
+			2 * dot_vec3(vec_to_light, vec_normal)));
+	return (vec_reflect_reversed);
 }
 
-//t_color3	get_light_of_pixel(t_scene *scene, t_light *light, t_ray pixel_ray, t_hit_record record)
-t_color3	get_light_of_pixel(t_scene *scene, t_light *light, t_trace *tracing)
+t_color3	get_specular_light(t_light *light, t_trace *tracing, t_hit_point_to_light to_light)
 {
-	t_color3	ret;
-	t_color3	diffuse;
-	t_color3	specular;
-	double		brightness;
+	t_vec3		vec_reflect_reversed;
+	double		cos_between_reflect_and_cam;
+	double		shininess_value;
+	double		specular_ratio;
+	double		specular;
 
-	//diffuse = get_diffuse_light(scene, light, record);
-	diffuse = get_diffuse_light(scene, light, tracing->record);
+	shininess_value = 64;
+	specular_ratio = 0.5;
+	vec_reflect_reversed = get_vec_reflect_reversed(to_light.unit_vec, tracing->record.normal);
+	cos_between_reflect_and_cam = dot_vec3(tracing->ray.direction, vec_reflect_reversed);
+	specular = pow(fmax(cos_between_reflect_and_cam, 0.0), shininess_value);
+	return (mul_vec3_t(mul_vec3_t(light->color, specular_ratio), specular));
+}
 
-	//specular = get_specular_light(light, pixel_ray, record);
-	specular = get_specular_light(light, tracing->ray, tracing->record);
+static void	set_hit_point_to_light(t_light *light, t_hit_record record, t_hit_point_to_light *to_light)
+{
+	to_light->vec = sub_vec3(light->origin, record.hit_point);
+	to_light->unit_vec = get_unit_vec3(to_light->vec);
+	to_light->len = get_vec3_len(to_light->vec);
+	to_light->ray = init_ray(
+		add_vec3(
+			record.hit_point, 
+			mul_vec3_t(record.normal, EPSILON)), 
+		to_light->unit_vec);
+}
 
+static t_color3	get_light_color(t_scene *scene, t_light *light, t_trace *tracing)
+{
+	t_hit_point_to_light	to_light;
+	t_color3				diffuse;
+	t_color3				specular;
+	double					brightness;
+	t_color3				light_color;
+
+	set_hit_point_to_light(light, tracing->record, &to_light);
+	if (is_in_shadow(scene->world.objects, to_light))
+		return (init_vec3(0, 0, 0));
+	diffuse = get_diffuse_light(light, tracing->record, to_light);
+	specular = get_specular_light(light, tracing, to_light);
 	brightness = light->bright_ratio * LUMEN;
-
-	ret = mul_vec3_t(add_vec3(diffuse, specular), brightness);
-	return (ret);
+	light_color = mul_vec3_t(add_vec3(diffuse, specular), brightness);
+	return (light_color);
 }
 
-#include "test.h" // todo: remove
-
-//t_color3	get_color_from_phong_lighting(t_scene *scene, t_ray pixel_ray, t_hit_record record)
 t_color3	get_color_from_phong_lighting(t_scene *scene, t_trace *tracing)
 {
-	t_color3	ret_light_color;
+	t_color3	lights_color;
 	t_lights	*lights;
 
-	ret_light_color = init_vec3(0, 0, 0);
+	lights_color = init_vec3(0, 0, 0);
 	lights = scene->world.lights;
 	while (lights)
 	{
-		ret_light_color = add_vec3(ret_light_color, \
-								get_light_of_pixel(scene, lights->content, tracing)); //get_light_of_pixel(scene, lights->content, pixel_ray, record));
+		lights_color = add_vec3(lights_color, \
+						get_light_color(scene, lights->content, tracing));
 		lights = lights->next;
 	}
-	ret_light_color = add_vec3(ret_light_color, \
+	lights_color = add_vec3(lights_color, \
 					mul_vec3_t(scene->ambient.color, scene->ambient.ratio));
-	ret_light_color = mul_vec3(ret_light_color, tracing->record.albedo);
-	ret_light_color.x = ret_light_color.x > 1 ? 1:ret_light_color.x;
-	ret_light_color.y = ret_light_color.y > 1 ? 1:ret_light_color.y;
-	ret_light_color.z = ret_light_color.z > 1 ? 1:ret_light_color.z;
-	return (ret_light_color);
+	lights_color = mul_vec3(lights_color, tracing->record.albedo);
+	if (lights_color.x > 1)
+		lights_color.x = 1;
+	if (lights_color.y > 1)
+		lights_color.y = 1;
+	if (lights_color.z > 1)
+		lights_color.z = 1;
+	return (lights_color);
 }
