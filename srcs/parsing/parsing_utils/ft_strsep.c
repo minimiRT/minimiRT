@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:03:23 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/13 16:32:25 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 16:37:49 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,5 @@ char	**ft_strsep(char const *s, char c)
 	words = _word_alloc(s, c);
 	if (words == NULL)
 		return (NULL);
-	return (seperate_words(s, c, words));
+	return (_seperate_words(s, c, words));
 }
