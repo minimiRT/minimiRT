@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_objects.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:27:31 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/13 09:37:02 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/13 10:50:10 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static t_bool	hit_object(t_object *object, t_trace *tracing)
 		is_hitting = hit_sphere(object, tracing);
 	if (object->type == PLANE)
 		is_hitting = hit_plane(object, tracing);
+	if (object->type == CYLINDER)
+		is_hitting = hit_cylinder(object, tracing);
 	return (is_hitting);
 }
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:27:40 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/13 09:37:47 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/13 13:26:51 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tracing_object.h"
 
-static t_bool	find_and_set_root_of_sphere(t_sphere *sphere, t_trace *tracing, \
+static t_bool	set_root_of_sphere(t_sphere *sphere, t_trace *tracing, \
 											t_vec3 vec_co, double *root)
 {
 	double		a;
@@ -46,7 +46,7 @@ t_bool	hit_sphere(t_object *object, t_trace *tracing)
 
 	sphere = object->element;
 	vec_co = sub_vec3(tracing->ray.origin, sphere->center);
-	if (find_and_set_root_of_sphere(sphere, tracing, vec_co, &root) == FALSE)
+	if (set_root_of_sphere(sphere, tracing, vec_co, &root) == FALSE)
 		return (FALSE);
 	tracing->record.distance_from_ray_origin = root;
 	tracing->record.hit_point = get_point_ray_reach(tracing->ray, root);

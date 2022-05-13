@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
+#    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/13 09:42:04 by mgo              ###   ########.fr        #
+#    Updated: 2022/05/13 10:50:58 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRCS_TRACING_LIGHT	=	phong_lighting.c\
 						specular.c
 SRCS_TRACING_OBJECT	=	hit_objects.c\
 						hit_sphere.c\
-						hit_plane.c
+						hit_plane.c\
+						hit_cylinder.c
 SRCS_TRACING		=	ray_tracing.c\
 						hit_objects.c\
 						hit_sphere.c\
