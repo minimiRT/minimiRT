@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:27:31 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/13 10:50:10 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 17:25:15 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_bool	hit_objects(t_objects *objects, t_trace *tracing)
 {
 	t_bool			is_hitting;
 
-	tracing->record = init_hit_record();
 	is_hitting = FALSE;
 	while (objects)
 	{

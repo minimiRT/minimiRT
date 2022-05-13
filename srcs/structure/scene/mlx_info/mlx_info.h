@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 11:01:34 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:36:32 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 20:08:57 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "mlx.h"
 
-typedef struct s_mlx_info t_mlx_info;
+typedef struct s_mlx_info	t_mlx_info;
 
 struct s_mlx_info
 {

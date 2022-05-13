@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 17:43:47 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 11:221:00 by mgo              ###   ########.fr       */
+/*   Created: 2022/05/13 20:06:29 by mypark            #+#    #+#             */
+/*   Updated: 2022/05/13 20:07:14 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC3_H
 # define VEC3_H
 
-typedef struct s_vec3 t_vec3;
-typedef t_vec3 t_point3;
-typedef t_vec3 t_color3;
+typedef struct s_vec3	t_vec3;
+typedef t_vec3			t_point3;
+typedef t_vec3			t_color3;
 
 struct s_vec3
 {
-	double x;
-	double y;
-	double z;
+	double	x;
+	double	y;
+	double	z;
 };
 
 void	copy_vec3(t_vec3 src, t_vec3 *dest);

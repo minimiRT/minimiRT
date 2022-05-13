@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_lighting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:27:45 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/13 09:28:52 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/13 20:06:42 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_bool	is_in_shadow(t_objects *objects, t_hit_point_to_light to_light)
 	t_hit_record	record_for_shadow;
 
 	tracing_light.ray = to_light.ray;
-	record_for_shadow.min = 0.0;
+	record_for_shadow = init_hit_record();
 	record_for_shadow.max = to_light.len;
 	tracing_light.record = record_for_shadow;
 	if (hit_objects(objects, &(tracing_light)))

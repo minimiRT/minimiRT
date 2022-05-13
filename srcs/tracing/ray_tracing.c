@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:36:44 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/13 09:07:27 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/13 17:25:03 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	set_pixel_ray(t_camera *cam, t_pixel *pixel)
 
 static void	set_pixel_color(t_scene *scene, t_pixel *pixel)
 {
+	pixel->tracing.record = init_hit_record();
 	if (hit_objects(scene->world.objects, &(pixel->tracing)))
 		pixel->color = get_color_from_phong_lighting(scene, &(pixel->tracing));
 	else
