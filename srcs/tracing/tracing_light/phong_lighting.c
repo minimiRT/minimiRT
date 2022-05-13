@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:27:45 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/13 09:23:24 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/13 09:28:52 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static void	set_hit_point_to_light(t_light *light, t_hit_record record, \
 	to_light->vec = sub_vec3(light->origin, record.hit_point);
 	to_light->unit_vec = get_unit_vec3(to_light->vec);
 	to_light->len = get_vec3_len(to_light->vec);
-	to_light->ray = init_ray(
-		add_vec3(
-			record.hit_point, 
-			mul_vec3_t(record.normal, EPSILON)), 
+	to_light->ray = init_ray(\
+		add_vec3(\
+			record.hit_point, \
+			mul_vec3_t(record.normal, EPSILON)), \
 		to_light->unit_vec);
 }
 
