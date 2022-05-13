@@ -6,12 +6,11 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:27:40 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/12 17:27:42 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/13 09:37:47 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tracing.h"
-#include <math.h>
+#include "tracing_object.h"
 
 static t_bool	find_and_set_root_of_sphere(t_sphere *sphere, t_trace *tracing, \
 											t_vec3 vec_co, double *root)

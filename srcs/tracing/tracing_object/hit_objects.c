@@ -6,11 +6,11 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:27:31 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/12 17:27:34 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/13 09:37:02 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tracing.h"
+#include "tracing_object.h"
 
 static t_bool	hit_object(t_object *object, t_trace *tracing)
 {
