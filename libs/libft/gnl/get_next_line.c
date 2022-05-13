@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 20:28:49 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 20:47:33 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 20:46:35 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,10 @@ void	free_list(int fd, t_gnl_list *prev, t_gnl_list *curr)
 char	*get_next_line(int fd)
 {
 	static t_gnl_list	head = {NULL, NULL, -1};
-	char			*remains;
-	char			r_buf[BUFFER_SIZE + 1];
-	char			*m_buf;
-	int				fd_state;
+	char				*remains;
+	char				r_buf[BUFFER_SIZE + 1];
+	char				*m_buf;
+	int					fd_state;
 
 	if (fd < 0)
 		return (NULL);
