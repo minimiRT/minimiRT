@@ -41,7 +41,7 @@ static void	*_free_words(char **words, int wc)
 	return (NULL);
 }
 
-static char	**_seperate_words(char *s, char c, char **words)
+static char	**_seperate_words(const char *s, char c, char **words)
 {
 	int		wc;
 	int		i;
