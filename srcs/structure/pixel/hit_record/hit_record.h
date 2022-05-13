@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:10:44 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/11 09:22:04 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 20:11:49 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "vec3.h"
 # include "enum.h"
 
-typedef struct s_hit_record t_hit_record;
+typedef struct s_hit_record	t_hit_record;
 
 struct s_hit_record
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   specular.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 09:15:05 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/13 09:22:33 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/13 19:56:17 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ t_color3	get_specular_light(t_light *light, t_trace *tracing, \
 	double		specular_ratio;
 	double		specular;
 
-	shininess_value = 64;
-	specular_ratio = 0.5;
+	shininess_value = 128;
+	specular_ratio = 1.0;
 	vec_reflect_reversed = get_vec_reflect_reversed(to_light.unit_vec, \
 													tracing->record.normal);
 	cos_between_reflect_and_cam = dot_vec3(tracing->ray.direction, \

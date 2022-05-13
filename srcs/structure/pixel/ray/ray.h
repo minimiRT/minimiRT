@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 09:19:39 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/11 09:22:14 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 20:11:30 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RAY_H
 # include "vec3.h"
 
-typedef struct s_ray t_ray;
+typedef struct s_ray	t_ray;
 
 struct s_ray
 {

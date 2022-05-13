@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 09:06:10 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/13 13:41:01 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 19:47:54 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,16 @@ static t_bool	set_root_of_cylinder_side(t_cylinder *cy, \
 static t_vec3	calc_cylinder_normal(t_cylinder *cylinder, t_trace *tracing)
 {
 	double	q_height;
-	t_vec3	q;
+	t_vec3	vec_q;
 	t_ray	temp_ray;
 	t_vec3	normal;
+	t_vec3	vec_cp;
 
-	q_height = dot_vec3(tracing->record.hit_point, cylinder->center);
+	vec_cp = sub_vec3(tracing->record.hit_point, cylinder->center);
+	q_height = dot_vec3(vec_cp, cylinder->orientation);
 	temp_ray = init_ray(cylinder->center, cylinder->orientation);
-	q = get_point_ray_reach(temp_ray, q_height);
-	normal = get_unit_vec3(sub_vec3(tracing->record.hit_point, q));
+	vec_q = get_point_ray_reach(temp_ray, q_height);
+	normal = get_unit_vec3(sub_vec3(tracing->record.hit_point, vec_q));
 	return (normal);
 }
 

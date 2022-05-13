@@ -6,10 +6,9 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 09:58:38 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 14:02:41 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 20:11:10 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CAMERA_H
 # define CAMERA_H
@@ -18,7 +17,7 @@
 # define VIEWPORT_HEIGHT	2.0
 # define FOCAL_LEN			1.0
 
-typedef struct s_camera t_camera;
+typedef struct s_camera	t_camera;
 
 struct s_camera
 {

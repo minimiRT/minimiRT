@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:51:01 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 10:57:46 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 20:08:14 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define SPHERE_H
 # include "vec3.h"
 
-typedef struct s_sphere t_sphere;
+typedef struct s_sphere	t_sphere;
 
-struct  s_sphere
+struct s_sphere
 {
 	t_point3	center;
 	double		radius;
