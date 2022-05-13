@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:50:53 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/05 17:26:01 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 19:54:33 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 # define CONSTANT_H
 # define FT_NULL ((void *)0)
 # define EPSILON (1e-6)
-# define LUMEN 3
+# define LUMEN 1
 #endif
 
