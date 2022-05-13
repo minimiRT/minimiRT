@@ -13,7 +13,12 @@
 #ifndef UTILS_H
 # define UTILS_H
 # include "enum.h"
+# include "mlx_info.h"
+
+# define KEYPRESS 2
+# define KEY_ESCAPE 53
 
 void	ft_assert(t_bool condition, char *msg);
+void	control_exit(t_mlx_info *mlx_info);
 
 #endif

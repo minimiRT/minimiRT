@@ -12,8 +12,8 @@
 
 #include "parsing.h"
 #include "scene.h"
-#include "test.h"
 #include "tracing.h"
+#include "utils.h"
 
 int	main(int argc, char **argv)
 {
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	init_scene(&scene);
 	parsing(&scene, argc, argv);
 	drive_ray_tracing(&scene);
+	control_exit(&(scene.mlx_info));
 	mlx_loop(scene.mlx_info.mlx);
 	return (0);
 }

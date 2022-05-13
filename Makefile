@@ -82,7 +82,8 @@ SRCS_SCENE			=	init_scene.c\
 SRCS_STRUCTURE		=	$(SRCS_PIXEL)\
 						$(SRCS_SCENE)\
 						$(SRCS_VEC3)
-SRCS_UTILS			=	ft_assert.c
+SRCS_UTILS			=	ft_assert.c\
+						control_exit.c
 SRCS_TEST_PRINT		=	print_scene.c\
 						write_color.c
 SRCS				=	main.c\
