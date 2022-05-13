@@ -6,13 +6,13 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/13 13:42:13 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/13 20:50:14 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	minirt
-CFLAGS	=	-fsanitize=address -g #-Wall -Werror -Wextra
-LDFLAGS	=	-fsanitize=address -g #-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra#-fsanitize=address -g
+LDFLAGS	=	-Wall -Werror -Wextra#-fsanitize=address -g
 VPATH	=	$(shell ls -R)
 SRCS_PARSING_UTILS	=	ft_strsep.c\
 						parse_double.c\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder_circle.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 09:06:10 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/13 20:07:42 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 20:51:14 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,11 @@ static t_bool	is_hit_circle(t_cylinder *cy, t_trace *tr, \
 	return (TRUE);
 }
 
-t_bool	hit_cylinder_circle(t_cylinder *cy, t_trace *tr, t_vec3 vec_co)
+t_bool	hit_cylinder_circle(t_cylinder *cy, t_trace *tr)
 {
 	t_vec3	top_point;
 	t_vec3	bottom_point;
 	t_ray	temp_ray;
-	double	t;
 
 	temp_ray = init_ray(cy->center, cy->orientation);
 	top_point = get_point_ray_reach(temp_ray, cy->height / 2);

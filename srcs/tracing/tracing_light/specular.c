@@ -6,23 +6,11 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 09:15:05 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/13 19:56:17 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 20:50:53 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tracing_light.h"
-
-static t_vec3	get_vec_reflect(t_vec3 vec_to_light, t_vec3 vec_normal)
-{
-	t_vec3	vec_reflect;
-
-	vec_reflect = sub_vec3(\
-		mul_vec3_t(\
-			vec_normal, \
-			2 * dot_vec3(vec_to_light, vec_normal)), \
-		vec_to_light);
-	return (vec_reflect);
-}
 
 static t_vec3	get_vec_reflect_reversed(t_vec3 vec_to_light, \
 											t_vec3 vec_normal)
