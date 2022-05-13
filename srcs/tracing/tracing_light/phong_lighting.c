@@ -6,15 +6,13 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:27:45 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/12 17:27:49 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/13 09:23:24 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tracing.h"
-#include "constant.h"
-#include <math.h>
+#include "tracing_light.h"
 
-t_bool	is_in_shadow(t_objects *objects, t_hit_point_to_light to_light)
+static t_bool	is_in_shadow(t_objects *objects, t_hit_point_to_light to_light)
 {
 	t_trace			tracing_light;
 	t_hit_record	record_for_shadow;
@@ -28,57 +26,8 @@ t_bool	is_in_shadow(t_objects *objects, t_hit_point_to_light to_light)
 	return (FALSE);
 }
 
-t_color3	get_diffuse_light(t_light *light, t_hit_record record, t_hit_point_to_light to_light)
-{
-	t_color3	diffuse_light;
-	double		diffuse_ratio;
-
-	diffuse_ratio = fmax(dot_vec3(record.normal, to_light.unit_vec), 0.0);
-	diffuse_light = mul_vec3_t(light->color, diffuse_ratio);
-	return (diffuse_light);
-}
-
-static t_vec3	get_vec_reflect(t_vec3 vec_to_light, t_vec3 vec_normal)
-{
-	t_vec3	vec_reflect;
-
-	vec_reflect = sub_vec3(\
-		mul_vec3_t(\
-			vec_normal, \
-			2 * dot_vec3(vec_to_light, vec_normal)), \
-		vec_to_light);
-	return (vec_reflect);
-}
-
-static t_vec3	get_vec_reflect_reversed(t_vec3 vec_to_light, t_vec3 vec_normal)
-{
-	t_vec3	vec_reflect_reversed;
-
-	vec_reflect_reversed = sub_vec3(\
-		vec_to_light, \
-		mul_vec3_t(\
-			vec_normal, \
-			2 * dot_vec3(vec_to_light, vec_normal)));
-	return (vec_reflect_reversed);
-}
-
-t_color3	get_specular_light(t_light *light, t_trace *tracing, t_hit_point_to_light to_light)
-{
-	t_vec3		vec_reflect_reversed;
-	double		cos_between_reflect_and_cam;
-	double		shininess_value;
-	double		specular_ratio;
-	double		specular;
-
-	shininess_value = 64;
-	specular_ratio = 0.5;
-	vec_reflect_reversed = get_vec_reflect_reversed(to_light.unit_vec, tracing->record.normal);
-	cos_between_reflect_and_cam = dot_vec3(tracing->ray.direction, vec_reflect_reversed);
-	specular = pow(fmax(cos_between_reflect_and_cam, 0.0), shininess_value);
-	return (mul_vec3_t(mul_vec3_t(light->color, specular_ratio), specular));
-}
-
-static void	set_hit_point_to_light(t_light *light, t_hit_record record, t_hit_point_to_light *to_light)
+static void	set_hit_point_to_light(t_light *light, t_hit_record record, \
+									t_hit_point_to_light *to_light)
 {
 	to_light->vec = sub_vec3(light->origin, record.hit_point);
 	to_light->unit_vec = get_unit_vec3(to_light->vec);
@@ -90,7 +39,8 @@ static void	set_hit_point_to_light(t_light *light, t_hit_record record, t_hit_po
 		to_light->unit_vec);
 }
 
-static t_color3	get_light_color(t_scene *scene, t_light *light, t_trace *tracing)
+static t_color3	get_each_light_color(t_scene *scene, t_light *light, \
+										t_trace *tracing)
 {
 	t_hit_point_to_light	to_light;
 	t_color3				diffuse;
@@ -118,7 +68,7 @@ t_color3	get_color_from_phong_lighting(t_scene *scene, t_trace *tracing)
 	while (lights)
 	{
 		lights_color = add_vec3(lights_color, \
-						get_light_color(scene, lights->content, tracing));
+						get_each_light_color(scene, lights->content, tracing));
 		lights = lights->next;
 	}
 	lights_color = add_vec3(lights_color, \

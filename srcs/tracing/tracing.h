@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:27:58 by mgo               #+#    #+#             */
-/*   Updated: 2022/05/12 17:27:59 by mgo              ###   ########.fr       */
+/*   Updated: 2022/05/13 09:11:37 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,6 @@
 # include "enum.h"
 # include "pixel.h"
 # include "mlx.h"
-
-typedef struct s_hit_point_to_light t_hit_point_to_light;
-
-struct s_hit_point_to_light
-{
-	t_vec3	vec;
-	t_vec3	unit_vec;
-	double	len;
-	t_ray	ray;
-};
 
 
 void		drive_ray_tracing(t_scene *scene);

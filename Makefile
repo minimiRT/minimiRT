@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
+#    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/12 10:52:43 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/13 09:20:44 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,16 @@ SRCS_PARSING		=	parsing.c\
 						add_new_plane.c\
 						add_new_light.c\
 						$(SRCS_PARSING_UTILS)
+SRCS_TRACING_LIGHT	=	phong_lighting.c\
+						diffuse.c\
+						specular.c
 SRCS_TRACING		=	ray_tracing.c\
 						hit_objects.c\
 						hit_sphere.c\
 						hit_plane.c\
 						phong_lighting.c\
-						draw_pixel.c
+						draw_pixel.c\
+						$(SRCS_TRACING_LIGHT)
 SRCS_VEC3			=	add_vec3.c\
 						init_vec3.c\
 						copy_vec3.c\
@@ -99,6 +103,7 @@ INCS	=	-I./srcs/parsing/parsing_utils/\
 			-I./srcs/structure/scene/world/object/plane/\
 			-I./srcs/structure/scene/world/object/sphere/\
 			-I./srcs/structure/vec3/\
+			-I./srcs/tracing/tracing_light/\
 			-I./srcs/tracing/\
 			-I./srcs/utils/\
 			-I./libs/libft/\
