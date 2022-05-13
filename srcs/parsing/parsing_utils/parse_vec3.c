@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 19:22:58 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/10 14:19:28 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 15:55:20 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_vec3	parse_vec3(char *str)
 	int		wc;
 
 	seperated = ft_strsep(str, ',');
-	ft_assert(seperated != FT_NULL, "Assert: malloc failed in parse_vec3\n");
+	ft_assert(seperated != FT_NULL, "Error: malloc failed in parse_vec3\n");
 	wc = ft_wordcount(seperated);
-	ft_assert(wc == 3, "Assert: invalid input of vector in parse_vec3\n");
+	ft_assert(wc == 3, "Error: invalid format of vector\n");
 	vec.x = parse_double(seperated[0]);
 	vec.y = parse_double(seperated[1]);
 	vec.z = parse_double(seperated[2]);

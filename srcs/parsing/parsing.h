@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:28 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/09 21:23:56 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 14:22:54 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,4 @@
 
 void	parsing(t_scene *scene, int argc, char **argv);
 
-# endif
+#endif

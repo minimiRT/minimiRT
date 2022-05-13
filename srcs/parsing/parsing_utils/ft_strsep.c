@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:03:23 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/12 11:04:05 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/13 16:32:25 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,12 @@ static void	*_free_words(char **words, int wc)
 	return (NULL);
 }
 
-char	**ft_strsep(char const *s, char c)
+static char	**_seperate_words(char *s, char c, char **words)
 {
-	char	**words;
 	int		wc;
 	int		i;
 	int		prev_sep;
 
-	words = _word_alloc(s, c);
-	if (words == NULL)
-		return (NULL);
 	i = -1;
 	wc = 0;
 	prev_sep = -1;
@@ -71,4 +67,14 @@ char	**ft_strsep(char const *s, char c)
 	ft_strlcpy(words[wc++], s + prev_sep + 1, (i - prev_sep));
 	words[wc] = NULL;
 	return (words);
+}
+
+char	**ft_strsep(char const *s, char c)
+{
+	char	**words;
+
+	words = _word_alloc(s, c);
+	if (words == NULL)
+		return (NULL);
+	return (seperate_words(s, c, words));
 }
