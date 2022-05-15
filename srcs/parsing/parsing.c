@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/13 16:27:03 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/15 15:53:49 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static void	parse_line(t_scene *scene, char *line, int	*basic_component)
 {
 	char	**splited;
 
-	if (line[0] == '\0')
-		return ;
 	splited = ft_split(line, ' ');
 	if (ft_strncmp(splited[0], "A", -1) == 0)
 	{
@@ -42,6 +40,8 @@ static void	parse_line(t_scene *scene, char *line, int	*basic_component)
 		add_new_plane(&scene->world.objects, splited);
 	else if (ft_strncmp(splited[0], "cy", -1) == 0)
 		add_new_cylinder(&scene->world.objects, splited);
+	else
+		ft_assert(FALSE, "Error: invalid type of component\n");
 	ft_splitfree(splited);
 }
 
@@ -72,7 +72,8 @@ void	parsing(t_scene *scene, int argc, char **argv)
 	line = get_next_line(fd);
 	while (line)
 	{
-		parse_line(scene, line, basic_component);
+		if (line[0] != '\0')
+			parse_line(scene, line, basic_component);
 		free(line);
 		line = get_next_line(fd);
 	}
