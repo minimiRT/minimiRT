@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
+#    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/15 15:21:24 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/15 21:25:30 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	miniRT
-CFLAGS	=	-Wall -Werror -Wextra#-fsanitize=address -g
-LDFLAGS	=	-Wall -Werror -Wextra#-fsanitize=address -g
+CFLAGS	=	-Wall -Werror -Wextra
+LDFLAGS	=	-Wall -Werror -Wextra
 VPATH	=	$(shell ls -R)
 SRCS_PARSING_UTILS	=	ft_strsep.c\
 						parse_double.c\
@@ -119,16 +119,18 @@ INCS	=	-I./srcs/parsing/parsing_utils/\
 			-I./incs\
 			-I./test
 
-LIBS		=	-L./libs/libft -lft
-LIBMLX		=	-L./libs/minilibx_macos -lmlx
+LIBFT		=	libft.a
+LIBFTFLAG	=	-L./libs/libft -lft
+LIBMLX		=	libmlx.a
+LIBMLXFLAG	=	-L./libs/minilibx_macos -lmlx
 FRAMEWORK	=	-framework OpenGL -framework AppKit
 
-all: $(NAME)
+all: $(LIBFT) $(LIBMLX) $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-	$(CC) $(LDFLAGS) $(LIBS) $(LIBMLX) $(FRAMEWORK) $(filter-out $<, $^) -o $@
+	$(CC) $(LDFLAGS) $(LIBFTFLAG) $(LIBMLXFLAG) $(FRAMEWORK) $(filter-out $<, $^) -o $@
 
-$(LIBS):
+$(LIBFT):
 	$(MAKE) ft
 
 $(LIBMLX):
@@ -154,16 +156,17 @@ re:
 ft:
 	$(MAKE) bonus -C libs/libft
 
+ft_fclean:
+	$(MAKE) fclean -C libs/libft
+
 ft_reclean:
 	$(MAKE) re -C libs/libft
 	$(MAKE) clean -C libs/libft
 
 mlx:
-	$(MAKE) all -C libs/minilibs_macos
+	$(MAKE) all -C libs/minilibx_macos
 
-mlx_reclean:
-	$(MAKE) re -C libs/minilibs_macos
-	$(MAKE) clean -C libs/minilibs_macos
+mlx_clean:
+	$(MAKE) clean -C libs/minilibx_macos
 
 .PHONY: all fclean clean re ft_reclean
-
