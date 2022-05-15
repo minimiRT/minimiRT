@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 19:23:43 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/13 16:12:41 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/15 12:41:52 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "utils.h"
 #include "parsing_utils.h"
 #include "constant.h"
-#include "test.h"
 
 static double	calc_integer_part(char **str)
 {
