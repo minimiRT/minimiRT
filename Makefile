@@ -6,11 +6,11 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/15 14:52:43 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/15 15:03:14 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	minirt
+NAME	=	miniRT
 CFLAGS	=	-Wall -Werror -Wextra#-fsanitize=address -g
 LDFLAGS	=	-Wall -Werror -Wextra#-fsanitize=address -g
 VPATH	=	$(shell ls -R)
@@ -124,8 +124,8 @@ LIBMLX	=	-L./libs/minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(LDFLAGS) $(LIBS) $(LIBMLX) $^ -o $@ 
+$(NAME): $(OBJ_DIR) $(OBJS)
+	$(CC) $(LDFLAGS) $(LIBS) $(LIBMLX) $(filter-out $<, $^) -o $@ 
 
 $(LIBS):
 	$(MAKE) ft
@@ -133,7 +133,7 @@ $(LIBS):
 $(LIBMLX):
 	$(MAKE) mlx
 
-$(OBJ_DIR)/%.o: %.c $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.c 
 	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 $(OBJ_DIR):
