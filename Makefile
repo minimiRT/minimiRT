@@ -6,7 +6,7 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/15 15:03:14 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/15 15:21:24 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,13 +119,14 @@ INCS	=	-I./srcs/parsing/parsing_utils/\
 			-I./incs\
 			-I./test
 
-LIBS	=	-L./libs/libft -lft
-LIBMLX	=	-L./libs/minilibx_macos -lmlx -framework OpenGL -framework AppKit
+LIBS		=	-L./libs/libft -lft
+LIBMLX		=	-L./libs/minilibx_macos -lmlx
+FRAMEWORK	=	-framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-	$(CC) $(LDFLAGS) $(LIBS) $(LIBMLX) $(filter-out $<, $^) -o $@ 
+	$(CC) $(LDFLAGS) $(LIBS) $(LIBMLX) $(FRAMEWORK) $(filter-out $<, $^) -o $@
 
 $(LIBS):
 	$(MAKE) ft
