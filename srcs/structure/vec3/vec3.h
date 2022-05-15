@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 20:06:29 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/13 20:07:14 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/15 14:51:52 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ t_vec3	get_unit_vec3(t_vec3 vec);
 t_vec3	get_min_between_vec3(t_vec3 first, t_vec3 second);
 double	get_vec3_len(t_vec3 vec);
 double	get_vec3_len_square(t_vec3 vec);
+int		is_same_vec3(t_vec3 a, t_vec3 b);
 
 #endif

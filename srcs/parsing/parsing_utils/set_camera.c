@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/13 15:45:03 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/15 14:51:59 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 #include "utils.h"
 #include "parsing_utils.h"
 #include "constant.h"
-
-static int	is_same_vec3(t_vec3 a, t_vec3 b)
-{
-	if (a.x == b.x && a.y == b.y && a.z == b.z)
-		return (1);
-	return (0);
-}
 
 static int	is_reverse_vec3(t_vec3 a, t_vec3 b)
 {

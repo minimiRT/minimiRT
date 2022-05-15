@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:27:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/05/13 15:54:15 by mypark           ###   ########.fr       */
+/*   Updated: 2022/05/15 14:50:52 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	add_new_cylinder(t_objects **objects, char **splited)
 {
 	t_object	*object;
 	t_cylinder	*cylinder;
+	t_vec3		orientation;
 
 	ft_assert(splited[1] != NULL, "Error: invalid format of cylinder\n");
 	ft_assert(splited[2] != NULL, "Error: invalid format of cylinder\n");
@@ -31,7 +32,10 @@ void	add_new_cylinder(t_objects **objects, char **splited)
 	ft_assert(cylinder != FT_NULL, "Error: malloc failed in add_new_cylinder");
 	ft_assert(object != FT_NULL, "Error: malloc failed in add_new_cylinder");
 	cylinder->center = parse_vec3(splited[1]);
-	cylinder->orientation = get_unit_vec3(parse_vec3(splited[2]));
+	orientation = parse_vec3(splited[2]);
+	ft_assert(!is_same_vec3(init_vec3(0, 0, 0), orientation), \
+			"Error: invalid orientation vector of cylinder\n");
+	cylinder->orientation = get_unit_vec3(orientation);
 	cylinder->radius = (parse_positive_double(splited[3])) / 2;
 	cylinder->height = parse_positive_double(splited[4]);
 	object->albedo = parse_color(splited[5]);

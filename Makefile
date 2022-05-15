@@ -6,7 +6,7 @@
 #    By: mypark <mypark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 20:24:15 by mypark            #+#    #+#              #
-#    Updated: 2022/05/15 13:32:52 by mypark           ###   ########.fr        #
+#    Updated: 2022/05/15 14:52:43 by mypark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ SRCS_VEC3			=	add_vec3.c\
 						mul_vec3_t.c\
 						new_vec3.c\
 						plus_vec3.c\
-						sub_vec3.c
+						sub_vec3.c\
+						is_same_vec3.c
 SRCS_MLX_INFO		=	init_mlx_info.c
 SRCS_OBJECT			=	new_object.c\
 						free_object.c\
